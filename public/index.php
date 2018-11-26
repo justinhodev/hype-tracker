@@ -12,25 +12,8 @@
 
 ?>
 
-<!-- BELOW NEED TO BE PUT INSIDE shared/public_header.php -->
-
-<!DOCTYPE html>
-
-<html lang="en">
-    <head>
-        <title>Hype Tracker</title>
-        <meta charset="utf-8">
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-    </head>
-
-    <header class="ml-3 mt-2">
-      <h1>HYPE TRACKER</h1>
-    </header>
-
-<!-- ABOVE NEED TO BE PUT INSIDE shared/public_header.php -->
-
 <?php 
-  //include(SHARED_PATH . '/public_header.php'); 
+  include(SHARED_PATH . '/public_header.php'); 
   include(SHARED_PATH . '/public_navigation.php');
 ?>
 
@@ -44,14 +27,13 @@
           <td><?php echo '<img src="data:image/jpeg;base64,'.base64_encode( $shoe['image'] ).'"/>'; ?></td>
           <td><?php echo h($shoe['price']); ?></td>
     	  </tr> -->
-      <div class="col-md-4">
-        <div class="card text-center border-dark px-4" style="width: 15rem;">
+      <div class="col-4 my-3">
+        <div class="card text-center px-4" style="width: 15rem;">
         <?php echo '<img src="data:image/jpeg;base64,'.base64_encode( $shoe['image'] ).'" class="card-img-top"/>'; ?>
           <div class="card-body">
             <h5 class="card-title"><?php echo h($shoe['sneaker_name']); ?></h5>
             <h6 class="card-subtitle text-muted"><?php echo h($shoe['brand_name']); ?></p>
-            <p class="card-text">$<?php echo h($shoe['price']); ?></p>
-            <a href="/details.php?name= <?php echo h($shoe['sneaker_name']); ?>" class="card-link">Details</a>
+            <a href="./details.php?id=<?php echo urlencode($shoe['sneaker_id']); ?>&name=<?php echo urlencode($shoe['sneaker_name']); ?>" class="card-link">Details</a>
           </div>
         </div>
       </div>
