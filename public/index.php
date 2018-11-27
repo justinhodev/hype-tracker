@@ -12,8 +12,8 @@
 
 ?>
 
-<?php 
-  include(SHARED_PATH . '/public_header.php'); 
+<?php
+  include(SHARED_PATH . '/public_header.php');
   include(SHARED_PATH . '/public_navigation.php');
 ?>
 
