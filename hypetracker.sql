@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Nov 27, 2018 at 07:45 AM
+-- Generation Time: Dec 01, 2018 at 12:47 PM
 -- Server version: 10.1.35-MariaDB
 -- PHP Version: 7.2.9
 
@@ -56,17 +56,21 @@ CREATE TABLE `members` (
   `member_id` int(11) NOT NULL,
   `firstname` varchar(50) NOT NULL,
   `lastname` varchar(50) NOT NULL,
-  `password` varchar(255) NOT NULL,
-  `email` varchar(255) NOT NULL
+  `username` varchar(255) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `hashed_password` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `members`
 --
 
-INSERT INTO `members` (`member_id`, `firstname`, `lastname`, `password`, `email`) VALUES
-(1, 'John', 'Smith', '*00A51F3F48415C7D4E8908980D443C29C69B60C9', 'example@mail.com'),
-(3, 'Bill', 'Bob', '*EE8326FC0570CF3A62B5CEF5A6798965A1CEEF8E', 'bob@mail.com');
+INSERT INTO `members` (`member_id`, `firstname`, `lastname`, `username`, `email`, `hashed_password`) VALUES
+(4, 'Garry', 'Grewal', 'garryg12345', 'garryg@sfu.ca', '$2y$10$Aj6tpgQ/3lGhncYwxhBZE.xFQekSNm3pe2lWYkqnu57B4eEw2I74e'),
+(5, 'Garry', 'Grewal', 'garryg12345', 'garrygrewal22@gmail.com', '$2y$10$wsh6NnoNVSieQbyCTU1B..v3ZUb9YKfm30f5FWBSv1hfG1E5wXfSC'),
+(6, 'Garry', 'Grewal', 'joesmith12345', 'garryg@sfu.ca', '$2y$10$Pp7K12Sn5ASFu9QFadVUW.g5cWrZWcIpUGVlkiPzlE3ENdbmbMy0m'),
+(7, 'Garry', 'Grewal', 'joesmith123456', 'garryg@sfu.ca', '$2y$10$ckiwVtQ2.I9ctOtkSt3ZhulBxxc1OvYRq9CrwoasbgK3YIw6dcb36'),
+(8, 'Garry', 'Grewal', 'jojo12345', 'garryg@sfu.ca', '$2y$10$4mATKwniqTRrtpZ6jnIYbehENMrGUuRkRKyu00iLVLSmhBb0zfFSi');
 
 -- --------------------------------------------------------
 
@@ -146,14 +150,6 @@ CREATE TABLE `watchlist` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `watchlist`
---
-
-INSERT INTO `watchlist` (`sneaker_id`, `member_id`) VALUES
-(4, 3),
-(1, 3);
-
---
 -- Indexes for dumped tables
 --
 
@@ -186,7 +182,7 @@ ALTER TABLE `sneakers`
 -- Indexes for table `watchlist`
 --
 ALTER TABLE `watchlist`
-  ADD KEY `sneaker_id` (`sneaker_id`),
+  ADD UNIQUE KEY `sneaker_id` (`sneaker_id`),
   ADD KEY `member_id` (`member_id`);
 
 --
@@ -203,7 +199,7 @@ ALTER TABLE `brands`
 -- AUTO_INCREMENT for table `members`
 --
 ALTER TABLE `members`
-  MODIFY `member_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `member_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `sneakers`
