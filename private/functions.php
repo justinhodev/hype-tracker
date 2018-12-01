@@ -15,4 +15,28 @@
         header("Location: " . $url);
     }
 
+    function is_post_request() {
+        return $_SERVER['REQUEST_METHOD'] == 'POST';
+    }
+
+    function is_get_request() {
+      return $_SERVER['REQUEST_METHOD'] == 'GET';
+    }
+
+    function h($string="") {
+      return htmlspecialchars($string);
+    }
+
+    function redirect_to($location) {
+      header("Location: " . $location);
+      exit;
+    }
+
+    function require_SSL(){
+      if($_SERVER['HTTPS'] != 'on'){
+        header("Location: https://" .$_SERVER['HTTP_HOST'] .$_SERVER['REQUEST_URI']);
+        exit();
+      }
+    }
+
 ?>

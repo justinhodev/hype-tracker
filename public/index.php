@@ -1,8 +1,4 @@
 <?php
-
-//TEST PAGE
-//-USED THIS PHP PAGE TO TEST SQL_FUNCTIONS.PHP
-
   require_once('../private/initialize.php');
 ?>
 
@@ -50,4 +46,4 @@
       mysqli_free_result($shoe_set);
 ?>
 
-<?php include(SHARED_PATH . '/public_footer.php');
+<?php include(SHARED_PATH . '/public_footer.php'); ?>
