@@ -1,6 +1,7 @@
 <?php
 
     require_once('../private/initialize.php');
+    require_once('../private/twitter-app.php');
 
     $sneaker_id = $_GET['id'] ?? '';
     $sneaker_name = $_GET['name'] ?? '';
@@ -27,6 +28,17 @@
     <div class="row mt-5 ml-2">
         <h3>Hype Trend</h3>
     </div>
+
+    <div>
+      <?php
+
+        //do something with the number of retweets
+        $retweet_total = get_num_of_retweets($sneaker['sneaker_name']);
+        update_ranking($sneaker_id, $retweet_total);
+
+      ?>
+    </div>
+
     <div class="row ml-5">
         <svg></svg>
         <script src="https://d3js.org/d3.v5.min.js"></script>
@@ -34,12 +46,12 @@
 
             var arr = [];
 
-            <?php 
+            <?php
                 $rankings = get_ranking($sneaker['sneaker_id']);
                 while ($ranking = mysqli_fetch_assoc($rankings)) {
             ?>
                     parseData(<?php echo $ranking['month']; ?>, <?php echo $ranking['score']; ?>);
-            <?php        
+            <?php
                 }
             ?>
 
@@ -64,7 +76,7 @@
 
                 var g = svg.append("g")
                     .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
-                
+
                 var x = d3.scaleTime().rangeRound([0, width]);
                 var y = d3.scaleLinear().rangeRound([height, 0]);
 
@@ -89,7 +101,7 @@
                     .attr("dy", "0.71em")
                     .attr("text-anchor", "end")
                     .text("Score (based on relative mentions)");
-                
+
                 g.append("path")
                     .datum(data)
                     .attr("fill", "none")

@@ -39,6 +39,28 @@
     return $result;
   }
 
+  //may need to change this function in future
+  function update_ranking($sneaker_id, $num_of_retweets) {
+    global $db;
+
+    $sql = "UPDATE rankings SET ";
+    $sql .= "score='" . db_escape($db, $num_of_retweets) . "', ";
+    $sql .= "number_of_mentions='" . db_escape($db, $num_of_retweets) . "' ";
+    $sql .= "WHERE sneaker_id='" . db_escape($db, $sneaker_id) . "' ";
+    $sql .= "LIMIT 1";
+
+    $result = mysqli_query($db, $sql);
+    // For UPDATE statements, $result is true/false
+    if($result) {
+      return true;
+    } else {
+      // UPDATE failed
+      echo mysqli_error($db);
+      db_disconnect($db);
+      exit;
+    }
+  }
+
   function find_admin_by_username($username) {
     global $db;
 
