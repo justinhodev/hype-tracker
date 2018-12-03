@@ -57,20 +57,28 @@ if(is_post_request()) {
   include(SHARED_PATH . '/public_navigation.php');
 ?>
 
-<div id="content">
+<div class="container" id="content">
+<div class="row justify-content-center my-5">
+<div class="col-md-6">
   <h1>Log in</h1>
 
   <?php echo display_errors($errors); ?>
 
   <form action="login.php" method="post">
-      Username:<br />
-      <input type="text" name="username" value="<?php echo h($username); ?>" /><br />
-      Password:<br />
-      <input type="password" name="password" value="" /><br />
-      <input type="submit" name="submit" value="Submit"  />
-    </form>
-  <br>
+    <div class="form-group">
+      <label for="username">Username</label>
+      <input class="form-control" id="username" type="text" name="username" value="<?php echo h($username); ?>" />
+    <div class="form-group">
+      <label for="password">Password</label>
+      <input class="form-control" type="password" name="password" value="" /><br />
+    </div>
+      <input class="btn btn-secondary" type="submit" name="submit" value="Submit"  />
+  </form>
+  <br />
+  <br />
   <a href="register.php">Don't have an account? Register Here</a>
+</div>
+</div>
 </div>
 
 <?php include(SHARED_PATH . '/public_footer.php'); ?>

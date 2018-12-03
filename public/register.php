@@ -43,47 +43,50 @@ include(SHARED_PATH . '/public_navigation.php');
 ?>
 
 
-<div id="content">
+<div class="container" id="content">
+<div class="row justify-content-center my-5">
+<div class="col-md-6">
   <h1>Register</h1>
 
   <?php echo display_errors($errors); ?>
 
   <form action="register.php" method="post">
-      <dl>
-        <dt>First name</dt>
-        <dd><input type="text" name="firstname" value="<?php echo h($admin['firstname']); ?>" /></dd>
-      </dl>
+      <div class="form-group">
+        <label for="firstname">First name</label>
+        <input id="firstname" class="form-control" type="text" name="firstname" value="<?php echo h($admin['firstname']); ?>" />
+      </div>
 
-      <dl>
-        <dt>Last name</dt>
-        <dd><input type="text" name="lastname" value="<?php echo h($admin['lastname']); ?>" /></dd>
-      </dl>
+      <div class="form-group">
+        <label>Last name</label>
+        <input class="form-control" type="text" name="lastname" value="<?php echo h($admin['lastname']); ?>" />
+      </div>
 
-      <dl>
-        <dt>Username</dt>
-        <dd><input type="text" name="username" value="<?php echo h($admin['username']); ?>" /></dd>
-      </dl>
+      <div class="form-group">
+        <label>Username</label>
+        <input class="form-control" type="text" name="username" value="<?php echo h($admin['username']); ?>" />
+      </div>
 
-      <dl>
-        <dt>Email </dt>
-        <dd><input type="text" name="email" value="<?php echo h($admin['email']); ?>" /><br /></dd>
-      </dl>
+      <div class="form-group">
+        <label>Email</label>
+        <input class="form-control" type="text" name="email" value="<?php echo h($admin['email']); ?>" />
+      </div>
 
-      <dl>
-        <dt>Password</dt>
-        <dd><input type="password" name="password" value="" /></dd>
-      </dl>
+      <div class="form-group">
+        <label>Password</label>
+        <input class="form-control" type="password" name="password" value="" />
+      </div>
 
-      <dl>
-        <dt>Confirm Password</dt>
-        <dd><input type="password" name="confirm_password" value="" /></dd>
-      </dl>
-      <br />
+      <div class="form-group">
+        <label>Confirm Password</label>
+        <input class="form-control" type="password" name="confirm_password" value="" />
+      </div>
 
       <div id="operations">
-        <input type="submit" value="Register" />
+        <input class="btn btn-secondary" type="submit" value="Register" />
       </div>
     </form>
+</div>
+</div>
 </div>
 
 <?php include(SHARED_PATH . '/public_footer.php'); ?>
