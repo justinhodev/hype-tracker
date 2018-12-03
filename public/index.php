@@ -27,7 +27,7 @@
       </div>
     </div>
   </div>
-  <div class="row">
+  <div class="row mb-5">
       <?php while($shoe = mysqli_fetch_assoc($shoe_set)) { ?>
         <div class="col-3 my-3">
           <div class="card text-center px-4" style="width: 15rem;">
