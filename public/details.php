@@ -24,7 +24,7 @@
         <div class="col-4">
             <h2 class="text-muted"><?php echo h($sneaker['brand_name']); ?></h2>
             <h1><?php echo h($sneaker['sneaker_name']); ?></h1>
-            <p class="mt-3 text-muted">$ <?php echo h($sneaker['price']); ?></p>
+            <p class="mt-3 text-muted">MSRP $ <?php echo h($sneaker['price']); ?></p>
         </div>
     </div>
     <div class="row mt-5 ml-2">
@@ -55,11 +55,19 @@
       ?>
     </div>
 
-    <div class="row ml-5">
-        <p>num of retweets: <?php echo $retweet_total ?></p>
+    <div class="row ml-3">
+        <h6>Twitter</h6>
     </div>
 
     <div class="row ml-5">
+        <p>Number of retweets in last 30 days: <?php echo $retweet_total ?></p>
+    </div>
+
+    <div class="row ml-3">
+        <h6>Reddit</h6>
+    </div>
+
+    <div class="row ml-5 mb-5">
         <svg></svg>
         <script src="https://d3js.org/d3.v5.min.js"></script>
         <script>
@@ -69,9 +77,9 @@
             // grab from database later
 
             <?php 
-                $data = get_reddit_mentions($sneaker['sneaker_name']);
+                $data = get_reddit_mentions(urlencode($sneaker['sneaker_name']));
                 foreach ($data as $day => $score) {
-                    echo "parseData(" .$day. ", " .$score. ")";
+                    echo "parseData(" .$day. ", " .$score. ");";
                 }
             ?>
             drawChart(arr);
@@ -108,7 +116,8 @@
                     .attr("transform", "translate(0," + height + ")")
                     .call(d3.axisBottom(x))
                     .select(".domain")
-                    .remove();
+                    .attr("text-anchor", "end")
+                    .text("Last 30 Days");
 
                 g.append("g")
                     .call(d3.axisLeft(y))
@@ -118,7 +127,7 @@
                     .attr("y", 6)
                     .attr("dy", "0.71em")
                     .attr("text-anchor", "end")
-                    .text("Score (based on relative mentions)");
+                    .text("Score (based on mentions)");
 
                 g.append("path")
                     .datum(data)
