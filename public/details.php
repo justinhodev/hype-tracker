@@ -56,27 +56,29 @@
     </div>
 
     <div class="row ml-5">
+        <p>num of retweets: <?php echo $retweet_total ?></p>
+    </div>
+
+    <div class="row ml-5">
         <svg></svg>
         <script src="https://d3js.org/d3.v5.min.js"></script>
         <script>
 
             var arr = [];
 
-            <?php
-                $rankings = get_ranking($sneaker['sneaker_id']);
-                while ($ranking = mysqli_fetch_assoc($rankings)) {
-            ?>
-                    parseData(<?php echo $ranking['month']; ?>, <?php echo $ranking['score']; ?>);
-            <?php
+            // grab from database later
+
+            <?php 
+                $data = get_reddit_mentions($sneaker['sneaker_name']);
+                foreach ($data as $day => $score) {
+                    echo "parseData(" .$day. ", " .$score. ")";
                 }
             ?>
-
             drawChart(arr);
 
-            function parseData(month, score) {
-                var currMonth = Date.now();
+            function parseData(day, score) {
                 arr.push({
-                    date: new Date(2018, month),
+                    date: day,
                     value: score
                 })
             }
@@ -93,7 +95,7 @@
                 var g = svg.append("g")
                     .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-                var x = d3.scaleTime().rangeRound([0, width]);
+                var x = d3.scaleLinear().rangeRound([0, width]);
                 var y = d3.scaleLinear().rangeRound([height, 0]);
 
                 var line = d3.line()

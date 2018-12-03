@@ -18,6 +18,7 @@
     require_once('functions.php');
     require_once('auth_functions.php');
     require_once('sql_functions.php');
+    require_once('reddit_api.php');
 
     $db = db_connect();
     $errors = [];
