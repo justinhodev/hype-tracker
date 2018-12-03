@@ -77,15 +77,15 @@
   function validate_admin($admin) {
     $errors = [];
 
-    if(is_blank($admin['first_name'])) {
+    if(is_blank($admin['firstname'])) {
       $errors[] = "First name cannot be blank.";
-    } elseif (!has_length($admin['first_name'], array('min' => 2, 'max' => 255))) {
+    } elseif (!has_length($admin['firstname'], array('min' => 2, 'max' => 255))) {
       $errors[] = "First name must be between 2 and 255 characters.";
     }
 
-    if(is_blank($admin['last_name'])) {
+    if(is_blank($admin['lastname'])) {
       $errors[] = "Last name cannot be blank.";
-    } elseif (!has_length($admin['last_name'], array('min' => 2, 'max' => 255))) {
+    } elseif (!has_length($admin['lastname'], array('min' => 2, 'max' => 255))) {
       $errors[] = "Last name must be between 2 and 255 characters.";
     }
 
@@ -95,6 +95,44 @@
       $errors[] = "Last name must be less than 255 characters.";
     } elseif (!has_valid_email_format($admin['email'])) {
       $errors[] = "Email must be a valid format.";
+    }
+
+    if(is_blank($admin['username'])) {
+      $errors[] = "Username cannot be blank.";
+    } elseif (!has_length($admin['username'], array('min' => 8, 'max' => 255))) {
+      $errors[] = "Username must be between 8 and 255 characters.";
+    } elseif (!has_unique_username($admin['username'], $admin['member_id'] ?? 0)) {
+      $errors[] = "Username not allowed. Try another.";
+    }
+
+    if(is_blank($admin['hashed_password'])) {
+      $errors[] = "Password cannot be blank.";
+    } elseif (!has_length($admin['hashed_password'], array('min' => 12))) {
+      $errors[] = "Password must contain 12 or more characters";
+    }
+
+    if(is_blank($admin['confirm_password'])) {
+      $errors[] = "Confirm password cannot be blank.";
+    } elseif ($admin['hashed_password'] !== $admin['confirm_password']) {
+      $errors[] = "Password and confirm password must match.";
+    }
+
+    return $errors;
+  }
+
+  function validate_admin_update($admin) {
+    $errors = [];
+
+    if(is_blank($admin['firstname'])) {
+      $errors[] = "First name cannot be blank.";
+    } elseif (!has_length($admin['firstname'], array('min' => 2, 'max' => 255))) {
+      $errors[] = "First name must be between 2 and 255 characters.";
+    }
+
+    if(is_blank($admin['lastname'])) {
+      $errors[] = "Last name cannot be blank.";
+    } elseif (!has_length($admin['lastname'], array('min' => 2, 'max' => 255))) {
+      $errors[] = "Last name must be between 2 and 255 characters.";
     }
 
     if(is_blank($admin['username'])) {
@@ -133,8 +171,8 @@
     $sql = "INSERT INTO members ";
     $sql .= "(firstname, lastname, email, username, hashed_password) ";
     $sql .= "VALUES (";
-    $sql .= "'" . db_escape($db, $admin['first_name']) . "',";
-    $sql .= "'" . db_escape($db, $admin['last_name']) . "',";
+    $sql .= "'" . db_escape($db, $admin['firstname']) . "',";
+    $sql .= "'" . db_escape($db, $admin['lastname']) . "',";
     $sql .= "'" . db_escape($db, $admin['email']) . "',";
     $sql .= "'" . db_escape($db, $admin['username']) . "',";
     $sql .= "'" . db_escape($db, $hashed_password) . "'";
@@ -146,6 +184,37 @@
       return true;
     } else {
       // INSERT failed
+      echo mysqli_error($db);
+      db_disconnect($db);
+      exit;
+    }
+  }
+
+  function update_admin($admin){
+    global $db;
+
+    $errors = validate_admin_update($admin);
+    if (!empty($errors)) {
+      return $errors;
+    }
+
+    $hashed_password = password_hash($admin['hashed_password'], PASSWORD_BCRYPT);
+
+    $sql = "UPDATE members SET ";
+    $sql .= "firstname='" . db_escape($db, $admin['firstname']) . "', ";
+    $sql .= "lastname='" . db_escape($db, $admin['lastname']) . "', ";
+    $sql .= "username='" . db_escape($db, $admin['username']) . "', ";
+    $sql .= "hashed_password='" . db_escape($db, $hashed_password) . "' ";
+    $sql .= "WHERE member_id='" . db_escape($db, $_SESSION['member_id']) . "' ";
+    $sql .= "LIMIT 1";
+
+    $result = mysqli_query($db, $sql);
+
+    // For UPDATE statements, $result is true/false
+    if($result) {
+      return true;
+    } else {
+      // UPDATE failed
       echo mysqli_error($db);
       db_disconnect($db);
       exit;

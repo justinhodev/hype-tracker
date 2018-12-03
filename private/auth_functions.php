@@ -22,6 +22,16 @@
     $_SESSION['member_id'] = $admin['member_id'];
     //$_SESSION['last_login'] = time();
     $_SESSION['username'] = $admin['username'];
+    $_SESSION['firstname'] = $admin['firstname'];
+    $_SESSION['lastname'] = $admin['lastname'];
+    $_SESSION['email'] = $admin['email'];
+    return true;
+  }
+
+  function update_myaccount($admin){
+    $_SESSION['username'] = $admin['username'];
+    $_SESSION['firstname'] = $admin['firstname'];
+    $_SESSION['lastname'] = $admin['lastname'];
     return true;
   }
 
