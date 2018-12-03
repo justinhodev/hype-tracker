@@ -201,5 +201,15 @@
     return $result;
   }
 
+  function remove_from_watchlist($sneaker_id){
+    global $db;
+
+    $sql = "DELETE FROM watchlist WHERE member_id=? AND sneaker_id=?";
+
+    $stmt = $db->prepare($sql);
+	  $stmt->bind_param('ss',$_SESSION['member_id'],$sneaker_id);
+    $stmt->execute();
+  }
+
 
 ?>

@@ -130,3 +130,5 @@
         </script>
     </div>
 </div>
+
+<?php include(SHARED_PATH . '/public_footer.php'); ?>
