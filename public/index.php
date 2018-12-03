@@ -1,5 +1,6 @@
 <?php
   require_once('../private/initialize.php');
+  no_SSL();
 ?>
 
 <?php
