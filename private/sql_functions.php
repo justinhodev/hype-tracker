@@ -152,5 +152,54 @@
     }
   }
 
+  function is_in_watchlist($sneaker_id) {
+  	global $db;
+  	if (isset($_SESSION['member_id'])) {
+  		$query = "SELECT COUNT(*) FROM watchlist WHERE sneaker_id=? AND member_id=?";
+  		$stmt = $db->prepare($query);
+  		$stmt->bind_param('ss',$sneaker_id, $_SESSION['member_id']);
+  		$stmt->execute();
+  		$stmt->bind_result($count);
+  	    return ($stmt->fetch() && $count > 0);
+  	}
+  	return false;
+  }
+
+  function insert_in_watchlist($sneaker_id) {
+    global $db;
+
+    $sql = "INSERT INTO watchlist ";
+    $sql .= "(sneaker_id, member_id) ";
+    $sql .= "VALUES (";
+    $sql .= "'" . db_escape($db, $sneaker_id) . "',";
+    $sql .= "'" . db_escape($db, $_SESSION['member_id']) . "'";
+    $sql .= ")";
+    $result = mysqli_query($db, $sql);
+
+    // For INSERT statements, $result is true/false
+    if($result) {
+      return true;
+    } else {
+      // INSERT failed
+      echo mysqli_error($db);
+      db_disconnect($db);
+      exit;
+    }
+  }
+
+  function get_watchlist(){
+    global $db;
+
+    //$sql = "SELECT DISTINCT sneaker_id FROM watchlist WHERE member_id = ?";
+
+    $sql = "SELECT S.sneaker_id, S.sneaker_name, S.release_date, S.price ";
+    $sql .= "FROM sneakers S INNER JOIN watchlist W ON S.sneaker_id = W.sneaker_id ";
+    $sql .= "WHERE W.member_id=" .$_SESSION['member_id'];
+
+    $result = mysqli_query($db, $sql);
+    confirm_result_set($result);
+    return $result;
+  }
+
 
 ?>

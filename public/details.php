@@ -2,9 +2,11 @@
 
     require_once('../private/initialize.php');
     require_once('../private/twitter-app.php');
+    no_SSL();
 
     $sneaker_id = $_GET['id'] ?? '';
     $sneaker_name = $_GET['name'] ?? '';
+    @$msg = trim($_GET['message']);
 
     $search = get_sneaker($sneaker_id, $sneaker_name);
     $sneaker = mysqli_fetch_assoc($search);
@@ -31,6 +33,20 @@
 
     <div>
       <?php
+        //this section needs to be changed in future
+
+        //show add to watchlist button if user is logged in
+        if(is_logged_in() && !is_in_watchlist($sneaker_id)){
+          echo "<form action=\"addtowatchlist.php\" method=\"post\">\n";
+        	echo "<input type=\"hidden\" name=\"sneaker_id\" value=$sneaker_id>\n";
+          echo "<input type=\"hidden\" name=\"sneaker_name\" value=\"" .htmlspecialchars($sneaker_name) ."\">\n";
+        	echo "<input type=\"submit\" value=\"Add To Watchlist\">\n";
+        	echo "</form>\n";
+        } else if (!empty($msg) ) {
+        	echo "<p>$msg</p>\n";
+        } else if (is_logged_in()) {
+        	echo "This model is already in your <a href=\"showwatchlist.php\">watchlist</a>.";
+        }
 
         //do something with the number of retweets
         $retweet_total = get_num_of_retweets($sneaker['sneaker_name']);

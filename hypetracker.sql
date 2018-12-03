@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Dec 02, 2018 at 08:29 AM
+-- Generation Time: Dec 03, 2018 at 05:25 AM
 -- Server version: 10.1.35-MariaDB
 -- PHP Version: 7.2.9
 
@@ -90,10 +90,10 @@ CREATE TABLE `rankings` (
 --
 
 INSERT INTO `rankings` (`sneaker_id`, `score`, `number_of_mentions`, `platform`) VALUES
-(1, 267, 267, 'Twitter'),
-(4, 1721, 1721, 'Twitter'),
-(5, 243, 243, 'Twitter'),
-(6, 218, 218, 'Twitter'),
+(1, 238, 238, 'Twitter'),
+(4, 1067, 1067, 'Twitter'),
+(5, 242, 242, 'Twitter'),
+(6, 48, 48, 'Twitter'),
 (8, 150, 150, 'Twitter'),
 (9, 15, 15, 'Twitter');
 
@@ -139,6 +139,15 @@ CREATE TABLE `watchlist` (
   `sneaker_id` int(11) NOT NULL,
   `member_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `watchlist`
+--
+
+INSERT INTO `watchlist` (`sneaker_id`, `member_id`) VALUES
+(4, 8),
+(6, 8),
+(8, 8);
 
 --
 -- Indexes for dumped tables
@@ -196,7 +205,7 @@ ALTER TABLE `members`
 -- AUTO_INCREMENT for table `sneakers`
 --
 ALTER TABLE `sneakers`
-  MODIFY `sneaker_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `sneaker_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- Constraints for dumped tables

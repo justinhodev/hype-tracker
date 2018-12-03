@@ -25,10 +25,8 @@
     return true;
   }
 
-  function is_logged_in(){
-  	if(!isset($_SESSION['member_id'])){
-    	header("Location: login.php");
-    }
+  function is_logged_in() {
+	  return isset($_SESSION['member_id']);
   }
 
   function has_length_greater_than($value, $min) {
