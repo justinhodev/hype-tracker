@@ -12,10 +12,30 @@
     $sneaker = mysqli_fetch_assoc($search);
     mysqli_free_result($search);
 
+    $ranking = get_ranking($sneaker_id);
+    $shoe_rank = mysqli_fetch_assoc($ranking);
+    mysqli_free_result($ranking);
+
     include(SHARED_PATH . '/public_header.php');
     include(SHARED_PATH . '/public_navigation.php');
-
 ?>
+
+
+<?php
+  //update ranking  once per day
+  $timeDiff = time() - $shoe_rank['time'];
+  //86400 = 1 day
+  if($timeDiff >= 86400){
+    $retweet_total = get_num_of_retweets($sneaker['sneaker_name']);
+    $reddit_data = get_reddit_mentions(urlencode($sneaker['sneaker_name']));
+
+    //serialize key:value pair array so we can store it in database
+    $serialized_data = serialize($reddit_data);
+
+    update_ranking($sneaker_id, $retweet_total, $serialized_data);
+  }
+?>
+
 <div class="container">
     <div class="row my-5 justify-content-start">
         <div class="col-4">
@@ -49,8 +69,6 @@
         }
 
         //do something with the number of retweets
-        $retweet_total = get_num_of_retweets($sneaker['sneaker_name']);
-        update_ranking($sneaker_id, $retweet_total);
 
       ?>
     </div>
@@ -60,7 +78,7 @@
     </div>
 
     <div class="row ml-5">
-        <p>Number of retweets in last 30 days: <?php echo $retweet_total ?></p>
+        <p>Number of retweets in last 7 days: <?php echo $shoe_rank['twitter_retweets'] ?></p>
     </div>
 
     <div class="row mt-2 ml-3">
@@ -76,8 +94,10 @@
 
             // grab from database later
 
-            <?php 
-                $data = get_reddit_mentions(urlencode($sneaker['sneaker_name']));
+            <?php
+                //$data = get_reddit_mentions(urlencode($sneaker['sneaker_name']));
+                $data = unserialize($shoe_rank['reddit_mentions']);
+
                 foreach ($data as $day => $score) {
                     echo "parseData(" .$day. ", " .$score. ");";
                 }

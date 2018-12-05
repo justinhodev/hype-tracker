@@ -40,12 +40,13 @@
   }
 
   //may need to change this function in future
-  function update_ranking($sneaker_id, $num_of_retweets) {
+  function update_ranking($sneaker_id, $num_of_retweets, $reddit_data) {
     global $db;
 
     $sql = "UPDATE rankings SET ";
-    $sql .= "score='" . db_escape($db, $num_of_retweets) . "', ";
-    $sql .= "number_of_mentions='" . db_escape($db, $num_of_retweets) . "' ";
+    $sql .= "reddit_mentions='" . db_escape($db, $reddit_data) . "', ";
+    $sql .= "twitter_retweets='" . db_escape($db, $num_of_retweets) . "', ";
+    $sql .= "time='" . db_escape($db, time()) . "' ";
     $sql .= "WHERE sneaker_id='" . db_escape($db, $sneaker_id) . "' ";
     $sql .= "LIMIT 1";
 
