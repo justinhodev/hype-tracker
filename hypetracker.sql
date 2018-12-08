@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Dec 05, 2018 at 06:51 AM
+-- Generation Time: Dec 08, 2018 at 11:15 PM
 -- Server version: 10.1.35-MariaDB
 -- PHP Version: 7.2.9
 
@@ -71,7 +71,8 @@ INSERT INTO `members` (`member_id`, `firstname`, `lastname`, `username`, `email`
 (6, 'Garry', 'Grewal', 'joesmith12345', 'garryg@sfu.ca', '$2y$10$Pp7K12Sn5ASFu9QFadVUW.g5cWrZWcIpUGVlkiPzlE3ENdbmbMy0m'),
 (7, 'Garry', 'Grewal', 'joesmith123456', 'garryg@sfu.ca', '$2y$10$ckiwVtQ2.I9ctOtkSt3ZhulBxxc1OvYRq9CrwoasbgK3YIw6dcb36'),
 (8, 'dwyane', 'wade', 'dwadeflash123', 'garryg@sfu.ca', '$2y$10$gArJpVDI8bGgy1SfLTgLCuB6kav/udBvJ62yXvUThtpHhN3kdODyS'),
-(9, 'Josh', 'Smith', 'joshsmith123', 'joshsmith@att.net', '$2y$10$SK2IJo8H6le4Yhmjd63tR.ApOM9tjy0PPgBbA29wud8Re6BpBwuMq');
+(9, 'Josh', 'Smith', 'joshsmith123', 'joshsmith@att.net', '$2y$10$SK2IJo8H6le4Yhmjd63tR.ApOM9tjy0PPgBbA29wud8Re6BpBwuMq'),
+(10, 'Lebron', 'James', 'lbjisthegoat123', 'lbj@hotmail.com', '$2y$10$FZSoZgQeoczZv53nqE7DtexS/GDKkM2koZCqzfj0/MYwYgF4u4cJ6');
 
 -- --------------------------------------------------------
 
@@ -83,7 +84,6 @@ CREATE TABLE `rankings` (
   `sneaker_id` int(11) NOT NULL,
   `reddit_mentions` text NOT NULL,
   `twitter_retweets` double NOT NULL,
-  `platform` varchar(255) NOT NULL,
   `time` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -91,13 +91,13 @@ CREATE TABLE `rankings` (
 -- Dumping data for table `rankings`
 --
 
-INSERT INTO `rankings` (`sneaker_id`, `reddit_mentions`, `twitter_retweets`, `platform`, `time`) VALUES
-(1, 'a:13:{i:0;i:2;i:1;i:9;i:2;i:2;i:3;i:3;i:4;i:8;i:5;i:4;i:6;i:2;i:7;i:1;i:8;i:1;i:9;i:0;i:10;i:0;i:11;i:0;i:12;i:1;}', 0, 'Twitter', 1543987140),
-(4, 'a:0:{}', 250, 'Twitter', 1543987081),
-(5, 'a:27:{i:0;i:1;i:1;i:0;i:2;i:0;i:3;i:0;i:4;i:0;i:5;i:0;i:6;i:0;i:7;i:0;i:8;i:0;i:9;i:0;i:10;i:0;i:11;i:0;i:12;i:0;i:13;i:0;i:14;i:0;i:15;i:0;i:16;i:0;i:17;i:0;i:18;i:0;i:19;i:0;i:20;i:0;i:21;i:2;i:22;i:7;i:23;i:0;i:24;i:0;i:25;i:0;i:26;i:2;}', 237, 'Twitter', 1543987050),
-(6, 'a:0:{}', 0, 'Twitter', 1543989025),
-(8, 'a:1:{i:0;i:1;}', 15, 'Twitter', 1543989019),
-(9, 'a:0:{}', 15, 'Twitter', 1543989021);
+INSERT INTO `rankings` (`sneaker_id`, `reddit_mentions`, `twitter_retweets`, `time`) VALUES
+(1, 'a:16:{i:0;i:2;i:1;i:9;i:2;i:2;i:3;i:3;i:4;i:8;i:5;i:4;i:6;i:2;i:7;i:1;i:8;i:1;i:9;i:0;i:10;i:0;i:11;i:0;i:12;i:1;i:13;i:0;i:14;i:0;i:15;i:1;}', 0, 1544306353),
+(4, 'a:0:{}', 263, 1544303601),
+(5, 'a:9:{i:0;i:2;i:1;i:7;i:2;i:0;i:3;i:0;i:4;i:0;i:5;i:2;i:6;i:0;i:7;i:0;i:8;i:1;}', 213, 1544307264),
+(6, 'a:1:{i:0;i:1;}', 0, 1544303657),
+(8, 'a:1:{i:0;i:1;}', 0, 1544305856),
+(9, 'a:0:{}', 0, 1544305853);
 
 -- --------------------------------------------------------
 
@@ -148,7 +148,10 @@ CREATE TABLE `watchlist` (
 
 INSERT INTO `watchlist` (`sneaker_id`, `member_id`) VALUES
 (1, 4),
-(6, 8);
+(6, 8),
+(5, 10),
+(1, 5),
+(4, 5);
 
 --
 -- Indexes for dumped tables
@@ -200,7 +203,7 @@ ALTER TABLE `brands`
 -- AUTO_INCREMENT for table `members`
 --
 ALTER TABLE `members`
-  MODIFY `member_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `member_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `sneakers`

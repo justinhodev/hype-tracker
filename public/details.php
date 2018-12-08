@@ -68,7 +68,7 @@
         } else if (!empty($msg) ) {
         	echo "<p>$msg</p>\n";
         } else if (is_logged_in()) {
-        	echo "This model is already in your <a href=\"showwatchlist.php\">watchlist</a>.";
+        	echo "This sneaker is already in your <a href=\"showwatchlist.php\">watchlist</a>.";
         }
       ?>
     </div>
