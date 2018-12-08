@@ -1,4 +1,9 @@
+<!--php page shows users watchlist-->
+
+<link rel="stylesheet" href="../private/css/main.css">
+
 <?php
+
   require_once('../private/initialize.php');
   no_SSL();
 
@@ -13,7 +18,7 @@
   include(SHARED_PATH . '/public_navigation.php');
 ?>
 
-<table>
+<table id="watchlist-items">
   <th>Sneaker Name</th>
   <th>Release Date</th>
   <th>Price</th>

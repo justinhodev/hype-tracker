@@ -1,3 +1,5 @@
+<!--php page displays details about a sneaker-->
+
 <?php
 
     require_once('../private/initialize.php');
@@ -8,10 +10,12 @@
     $sneaker_name = $_GET['name'] ?? '';
     @$msg = trim($_GET['message']);
 
+    //retrieve sneaker information from database
     $search = get_sneaker($sneaker_id, $sneaker_name);
     $sneaker = mysqli_fetch_assoc($search);
     mysqli_free_result($search);
 
+    //retrieve ranking for sneaker from database
     $ranking = get_ranking($sneaker_id);
     $shoe_rank = mysqli_fetch_assoc($ranking);
     mysqli_free_result($ranking);
@@ -53,7 +57,6 @@
 
     <div>
       <?php
-        //this section needs to be changed in future
 
         //show add to watchlist button if user is logged in
         if(is_logged_in() && !is_in_watchlist($sneaker_id)){
@@ -67,9 +70,6 @@
         } else if (is_logged_in()) {
         	echo "This model is already in your <a href=\"showwatchlist.php\">watchlist</a>.";
         }
-
-        //do something with the number of retweets
-
       ?>
     </div>
 
@@ -92,10 +92,8 @@
 
             var arr = [];
 
-            // grab from database later
-
             <?php
-                //$data = get_reddit_mentions(urlencode($sneaker['sneaker_name']));
+                //unserialize array in database
                 $data = unserialize($shoe_rank['reddit_mentions']);
 
                 foreach ($data as $day => $score) {

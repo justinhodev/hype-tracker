@@ -1,3 +1,5 @@
+<!--php page used to add a sneaker to members watchlist-->
+
 <?php
   require_once('../private/initialize.php');
 ?>

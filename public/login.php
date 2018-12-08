@@ -1,3 +1,5 @@
+<!--php page to log in to an account-->
+
 <?php
   require_once('../private/initialize.php');
   require_SSL();
@@ -33,7 +35,6 @@ if(is_post_request()) {
       if(password_verify($password, $admin['hashed_password'])) {
         // password matches
         log_in_admin($admin);
-        //redirect_to(url_for('index.php'));
         redirect_to("http://" .$_SERVER['HTTP_HOST'] .$doc_root ."/index.php");
       } else {
         // username found, but password does not match

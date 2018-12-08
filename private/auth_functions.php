@@ -1,4 +1,5 @@
 <?
+  //authorization functions
 
   function display_errors($errors=array()) {
     $output = '';

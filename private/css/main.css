@@ -1,0 +1,31 @@
+
+
+#watchlist-items, #account-info {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+#watchlist-items td, #account-info td, #watchlist-items th, #account-info th{
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+#watchlist-items tr:nth-child(even){background-color: #f2f2f2;}
+
+#watchlist-items tr:hover {background-color: #ddd;}
+
+#watchlist-items th, #account-info th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #355282;
+  color: white;
+}
+
+/*
+#account-info th, #account-info td {
+  padding: 8px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+*/

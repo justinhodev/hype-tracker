@@ -1,4 +1,5 @@
 <?
+  //uses twitterOauth helper page
   require "twitteroauth/autoload.php";
 
   use Abraham\TwitterOAuth\TwitterOAuth;
