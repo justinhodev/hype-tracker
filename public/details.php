@@ -1,3 +1,5 @@
+<!--php page displays details about a sneaker-->
+
 <?php
 
     require_once('../private/initialize.php');
@@ -8,14 +10,36 @@
     $sneaker_name = $_GET['name'] ?? '';
     @$msg = trim($_GET['message']);
 
+    //retrieve sneaker information from database
     $search = get_sneaker($sneaker_id, $sneaker_name);
     $sneaker = mysqli_fetch_assoc($search);
     mysqli_free_result($search);
 
+    //retrieve ranking for sneaker from database
+    $ranking = get_ranking($sneaker_id);
+    $shoe_rank = mysqli_fetch_assoc($ranking);
+    mysqli_free_result($ranking);
+
     include(SHARED_PATH . '/public_header.php');
     include(SHARED_PATH . '/public_navigation.php');
-
 ?>
+
+
+<?php
+  //update ranking  once per day
+  $timeDiff = time() - $shoe_rank['time'];
+  //86400 = 1 day
+  if($timeDiff >= 86400){
+    $retweet_total = get_num_of_retweets($sneaker['sneaker_name']);
+    $reddit_data = get_reddit_mentions(urlencode($sneaker['sneaker_name']));
+
+    //serialize key:value pair array so we can store it in database
+    $serialized_data = serialize($reddit_data);
+
+    update_ranking($sneaker_id, $retweet_total, $serialized_data);
+  }
+?>
+
 <div class="container">
     <div class="row my-5 justify-content-start">
         <div class="col-4">
@@ -33,7 +57,6 @@
 
     <div>
       <?php
-        //this section needs to be changed in future
 
         //show add to watchlist button if user is logged in
         if(is_logged_in() && !is_in_watchlist($sneaker_id)){
@@ -45,13 +68,8 @@
         } else if (!empty($msg) ) {
         	echo "<p>$msg</p>\n";
         } else if (is_logged_in()) {
-        	echo "This model is already in your <a href=\"showwatchlist.php\">watchlist</a>.";
+        	echo "This sneaker is already in your <a href=\"showwatchlist.php\">watchlist</a>.";
         }
-
-        //do something with the number of retweets
-        $retweet_total = get_num_of_retweets($sneaker['sneaker_name']);
-        update_ranking($sneaker_id, $retweet_total);
-
       ?>
     </div>
 
@@ -60,7 +78,7 @@
     </div>
 
     <div class="row ml-5">
-        <p>Number of retweets in last 30 days: <?php echo $retweet_total ?></p>
+        <p>Number of retweets in last 7 days: <?php echo $shoe_rank['twitter_retweets'] ?></p>
     </div>
 
     <div class="row mt-2 ml-3">
@@ -74,10 +92,10 @@
 
             var arr = [];
 
-            // grab from database later
+            <?php
+                //unserialize array in database
+                $data = unserialize($shoe_rank['reddit_mentions']);
 
-            <?php 
-                $data = get_reddit_mentions(urlencode($sneaker['sneaker_name']));
                 foreach ($data as $day => $score) {
                     echo "parseData(" .$day. ", " .$score. ");";
                 }

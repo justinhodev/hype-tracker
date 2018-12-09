@@ -1,4 +1,5 @@
 <?php
+    //database helper functions
 
     require_once('db_credentials.php');
 

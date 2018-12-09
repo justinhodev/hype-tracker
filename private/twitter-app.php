@@ -1,4 +1,5 @@
 <?
+  //uses twitterOauth helper page
   require "twitteroauth/autoload.php";
 
   use Abraham\TwitterOAuth\TwitterOAuth;
@@ -17,7 +18,7 @@
     $content = $connection->get("account/verify_credentials");
 
     //return the 10 most popular tweets
-    $tweets = $connection->get("search/tweets", ["q" => $shoename, "result_type" => "mixed", "lang" => "en", "count" => 10]);
+    $tweets = $connection->get("search/tweets", ["q" => $shoename, "result_type" => "popular", "lang" => "en", "count" => 10]);
 
     $num_of_retweets = 0;
 

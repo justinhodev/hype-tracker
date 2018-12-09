@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Dec 03, 2018 at 05:25 AM
+-- Generation Time: Dec 08, 2018 at 11:15 PM
 -- Server version: 10.1.35-MariaDB
 -- PHP Version: 7.2.9
 
@@ -66,11 +66,13 @@ CREATE TABLE `members` (
 --
 
 INSERT INTO `members` (`member_id`, `firstname`, `lastname`, `username`, `email`, `hashed_password`) VALUES
-(4, 'Garry', 'Grewal', 'garryg12345', 'garryg@sfu.ca', '$2y$10$Aj6tpgQ/3lGhncYwxhBZE.xFQekSNm3pe2lWYkqnu57B4eEw2I74e'),
+(4, 'Josh', 'Smith', 'garrygrewal123', 'garryg@sfu.ca', '$2y$10$Mho0voCyJz8KOS84iTJhDO6EDfmOg.A1leoBYDpT3NlIDjAAho5vK'),
 (5, 'Garry', 'Grewal', 'garryg12345', 'garrygrewal22@gmail.com', '$2y$10$wsh6NnoNVSieQbyCTU1B..v3ZUb9YKfm30f5FWBSv1hfG1E5wXfSC'),
 (6, 'Garry', 'Grewal', 'joesmith12345', 'garryg@sfu.ca', '$2y$10$Pp7K12Sn5ASFu9QFadVUW.g5cWrZWcIpUGVlkiPzlE3ENdbmbMy0m'),
 (7, 'Garry', 'Grewal', 'joesmith123456', 'garryg@sfu.ca', '$2y$10$ckiwVtQ2.I9ctOtkSt3ZhulBxxc1OvYRq9CrwoasbgK3YIw6dcb36'),
-(8, 'Garry', 'Grewal', 'jojo12345', 'garryg@sfu.ca', '$2y$10$4mATKwniqTRrtpZ6jnIYbehENMrGUuRkRKyu00iLVLSmhBb0zfFSi');
+(8, 'dwyane', 'wade', 'dwadeflash123', 'garryg@sfu.ca', '$2y$10$gArJpVDI8bGgy1SfLTgLCuB6kav/udBvJ62yXvUThtpHhN3kdODyS'),
+(9, 'Josh', 'Smith', 'joshsmith123', 'joshsmith@att.net', '$2y$10$SK2IJo8H6le4Yhmjd63tR.ApOM9tjy0PPgBbA29wud8Re6BpBwuMq'),
+(10, 'Lebron', 'James', 'lbjisthegoat123', 'lbj@hotmail.com', '$2y$10$FZSoZgQeoczZv53nqE7DtexS/GDKkM2koZCqzfj0/MYwYgF4u4cJ6');
 
 -- --------------------------------------------------------
 
@@ -80,22 +82,22 @@ INSERT INTO `members` (`member_id`, `firstname`, `lastname`, `username`, `email`
 
 CREATE TABLE `rankings` (
   `sneaker_id` int(11) NOT NULL,
-  `score` double NOT NULL,
-  `number_of_mentions` double NOT NULL,
-  `platform` varchar(255) NOT NULL
+  `reddit_mentions` text NOT NULL,
+  `twitter_retweets` double NOT NULL,
+  `time` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `rankings`
 --
 
-INSERT INTO `rankings` (`sneaker_id`, `score`, `number_of_mentions`, `platform`) VALUES
-(1, 238, 238, 'Twitter'),
-(4, 1067, 1067, 'Twitter'),
-(5, 242, 242, 'Twitter'),
-(6, 48, 48, 'Twitter'),
-(8, 150, 150, 'Twitter'),
-(9, 15, 15, 'Twitter');
+INSERT INTO `rankings` (`sneaker_id`, `reddit_mentions`, `twitter_retweets`, `time`) VALUES
+(1, 'a:16:{i:0;i:2;i:1;i:9;i:2;i:2;i:3;i:3;i:4;i:8;i:5;i:4;i:6;i:2;i:7;i:1;i:8;i:1;i:9;i:0;i:10;i:0;i:11;i:0;i:12;i:1;i:13;i:0;i:14;i:0;i:15;i:1;}', 0, 1544306353),
+(4, 'a:0:{}', 263, 1544303601),
+(5, 'a:9:{i:0;i:2;i:1;i:7;i:2;i:0;i:3;i:0;i:4;i:0;i:5;i:2;i:6;i:0;i:7;i:0;i:8;i:1;}', 213, 1544307264),
+(6, 'a:1:{i:0;i:1;}', 0, 1544303657),
+(8, 'a:1:{i:0;i:1;}', 0, 1544305856),
+(9, 'a:0:{}', 0, 1544305853);
 
 -- --------------------------------------------------------
 
@@ -145,9 +147,11 @@ CREATE TABLE `watchlist` (
 --
 
 INSERT INTO `watchlist` (`sneaker_id`, `member_id`) VALUES
-(4, 8),
+(1, 4),
 (6, 8),
-(8, 8);
+(5, 10),
+(1, 5),
+(4, 5);
 
 --
 -- Indexes for dumped tables
@@ -182,8 +186,8 @@ ALTER TABLE `sneakers`
 -- Indexes for table `watchlist`
 --
 ALTER TABLE `watchlist`
-  ADD UNIQUE KEY `sneaker_id` (`sneaker_id`),
-  ADD KEY `member_id` (`member_id`);
+  ADD KEY `member_id` (`member_id`),
+  ADD KEY `sneaker_id` (`sneaker_id`) USING BTREE;
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -199,7 +203,7 @@ ALTER TABLE `brands`
 -- AUTO_INCREMENT for table `members`
 --
 ALTER TABLE `members`
-  MODIFY `member_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `member_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `sneakers`

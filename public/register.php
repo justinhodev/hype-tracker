@@ -1,3 +1,5 @@
+<!--php page allows users to register for an account-->
+
 <?php
   require_once('../private/initialize.php');
 
@@ -17,7 +19,7 @@
     $result = insert_admin($admin);
     if($result === true) {
       $new_id = mysqli_insert_id($db);
-      //$_SESSION['message'] = 'User created.';
+      
       redirect_to(url_for('login.php'));
     } else {
       $errors = $result;

@@ -1,4 +1,5 @@
 <?php
+    //helper functions
 
     function url_for($script_path) {
         if($script_path[0] != '/') {

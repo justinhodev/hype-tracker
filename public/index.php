@@ -1,10 +1,13 @@
+<!--php page shows all sneakers in database-->
+
 <?php
   require_once('../private/initialize.php');
   no_SSL();
+
 ?>
 
 <?php
-
+  //query to database to retrieve all sneakers
   $shoe_set = find_all_shoes();
 
 ?>

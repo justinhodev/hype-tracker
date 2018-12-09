@@ -1,3 +1,7 @@
+<!--php page displays account information and option to change information-->
+
+<link rel="stylesheet" href="../private/css/main.css">
+
 <?php
   require_once('../private/initialize.php');
   require_SSL();
@@ -5,6 +9,7 @@
 
 <?php
 
+  //if user hits update button check validation and update information in database
   if(is_post_request()) {
     $errors = [];
     $admin['firstname'] = $_POST['firstname'] ?? '';
@@ -16,8 +21,7 @@
     $result = update_admin($admin);
     if($result === true) {
       update_myaccount($admin);
-      //$_SESSION['message'] = 'User updated.';
-      //redirect_to(url_for('login.php'));
+
     } else {
       $errors = $result;
     }
@@ -43,11 +47,19 @@
 <div id="content">
 
   <h1>Current Account Information</h1>
-  <p>First Name: <?php echo $_SESSION['firstname']; ?></p><br>
-  <p>Last Name: <?php echo $_SESSION['lastname']; ?></p><br>
-  <p>Username: <?php echo $_SESSION['username']; ?></p><br>
-  <p>Email: <?php echo $_SESSION['email']; ?></p><br>
-
+  <table id="account-info">
+    <th>First Name</th>
+    <th>Last Name</th>
+    <th>Username</th>
+    <th>Email</th>
+    <tr>
+      <td><?php echo $_SESSION['firstname']; ?></td>
+      <td><?php echo $_SESSION['lastname']; ?></td>
+      <td><?php echo $_SESSION['username']; ?></td>
+      <td><?php echo $_SESSION['email']; ?></td>
+    </tr>
+  </table>
+  <br>
   <h1>Update Account Information</h1>
 
   <?php echo display_errors($errors); ?>

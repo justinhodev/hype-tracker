@@ -8,8 +8,6 @@
 
     $sql = "SELECT * FROM sneakers INNER JOIN brands ON sneakers.brand_id=brands.brand_id";
 
-    //$sql .= "ORDER BY position ASC";
-    //echo $sql;
     $result = mysqli_query($db, $sql);
     confirm_result_set($result);
     return $result;
@@ -29,6 +27,8 @@
 
   }
 
+  //Rankings
+
   function get_ranking($sneaker_id) {
     global $db;
 
@@ -39,13 +39,14 @@
     return $result;
   }
 
-  //may need to change this function in future
-  function update_ranking($sneaker_id, $num_of_retweets) {
+  //update the sneakers ranking
+  function update_ranking($sneaker_id, $num_of_retweets, $reddit_data) {
     global $db;
 
     $sql = "UPDATE rankings SET ";
-    $sql .= "score='" . db_escape($db, $num_of_retweets) . "', ";
-    $sql .= "number_of_mentions='" . db_escape($db, $num_of_retweets) . "' ";
+    $sql .= "reddit_mentions='" . db_escape($db, $reddit_data) . "', ";
+    $sql .= "twitter_retweets='" . db_escape($db, $num_of_retweets) . "', ";
+    $sql .= "time='" . db_escape($db, time()) . "' ";
     $sql .= "WHERE sneaker_id='" . db_escape($db, $sneaker_id) . "' ";
     $sql .= "LIMIT 1";
 
@@ -60,6 +61,8 @@
       exit;
     }
   }
+
+  //Admins/Members
 
   function find_admin_by_username($username) {
     global $db;
@@ -220,6 +223,8 @@
       exit;
     }
   }
+
+  //Watchlist
 
   function is_in_watchlist($sneaker_id) {
   	global $db;
