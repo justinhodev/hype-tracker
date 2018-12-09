@@ -51,11 +51,8 @@
             <p class="mt-3 text-muted">MSRP $<?php echo h($sneaker['price']); ?></p>
         </div>
     </div>
-    <div class="row mt-5 ml-2">
-        <h3>Hype Trend</h3>
-    </div>
-
-    <div>
+    
+    <div class="row ml-5">
       <?php
 
         //show add to watchlist button if user is logged in
@@ -63,7 +60,7 @@
           echo "<form action=\"addtowatchlist.php\" method=\"post\">\n";
         	echo "<input type=\"hidden\" name=\"sneaker_id\" value=$sneaker_id>\n";
           echo "<input type=\"hidden\" name=\"sneaker_name\" value=\"" .htmlspecialchars($sneaker_name) ."\">\n";
-        	echo "<input type=\"submit\" value=\"Add To Watchlist\">\n";
+        	echo "<input type=\"submit\" class=\"btn btn-primary\" value=\"Add To Watchlist\">\n";
         	echo "</form>\n";
         } else if (!empty($msg) ) {
         	echo "<p>$msg</p>\n";
@@ -71,6 +68,10 @@
         	echo "This sneaker is already in your <a href=\"showwatchlist.php\">watchlist</a>.";
         }
       ?>
+    </div>
+
+    <div class="row mt-5 ml-2">
+        <h3>Hype Trend</h3>
     </div>
 
     <div class="row mt-2 ml-3">

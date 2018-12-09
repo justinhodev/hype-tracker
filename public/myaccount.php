@@ -44,9 +44,9 @@
 ?>
 
 
-<div id="content">
+<div id="content" class="container">
 
-  <h1>Current Account Information</h1>
+  <h4>Current Account Information</h1>
   <table id="account-info">
     <th>First Name</th>
     <th>Last Name</th>
@@ -60,41 +60,49 @@
     </tr>
   </table>
   <br>
-  <h1>Update Account Information</h1>
+
+  <div class="row">
+    <div class="col-md">
+      <h4>Update Account Information</h1>
+    </div>
+  </div>
 
   <?php echo display_errors($errors); ?>
 
-  <form action="myaccount.php" method="post">
-      <dl>
-        <dt>New First name</dt>
-        <dd><input type="text" name="firstname" value="<?php echo h($admin['firstname']); ?>" /></dd>
-      </dl>
+  <div class="row">
+    <div class="col-3">
+      <form action="myaccount.php" method="post">
+        <div class="form-group">
+          <label for="firstname">First name</label>
+          <input id="firstname" class="form-control" type="text" name="firstname" value="<?php echo h($admin['firstname']); ?>" />
+        </div>
 
-      <dl>
-        <dt>New Last name</dt>
-        <dd><input type="text" name="lastname" value="<?php echo h($admin['lastname']); ?>" /></dd>
-      </dl>
+        <div class="form-group">
+          <label>Last name</label>
+          <input class="form-control" type="text" name="lastname" value="<?php echo h($admin['lastname']); ?>" />
+        </div>
 
-      <dl>
-        <dt>New Username</dt>
-        <dd><input type="text" name="username" value="<?php echo h($admin['username']); ?>" /></dd>
-      </dl>
+        <div class="form-group">
+          <label>Username</label>
+          <input class="form-control" type="text" name="username" value="<?php echo h($admin['username']); ?>" />
+        </div>
 
-      <dl>
-        <dt>New Password</dt>
-        <dd><input type="password" name="password" value="" /></dd>
-      </dl>
+        <div class="form-group">
+          <label>Password</label>
+          <input class="form-control" type="password" name="password" value="" />
+        </div>
 
-      <dl>
-        <dt>Confirm New Password</dt>
-        <dd><input type="password" name="confirm_password" value="" /></dd>
-      </dl>
-      <br />
+        <div class="form-group">
+          <label>Confirm Password</label>
+          <input class="form-control" type="password" name="confirm_password" value="" />
+        </div>
 
-      <div id="operations">
-        <input type="submit" value="Update" />
-      </div>
-    </form>
+        <div id="operations">
+          <input type="submit" class="btn btn-secondary" value="Update" />
+        </div>
+      </form>
+    </div>
+  </div>
 
 </div>
 

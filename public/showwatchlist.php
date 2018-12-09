@@ -18,37 +18,40 @@
   include(SHARED_PATH . '/public_navigation.php');
 ?>
 
-<table id="watchlist-items">
-  <th>Sneaker Name</th>
-  <th>Release Date</th>
-  <th>Price</th>
-  <th></th>
+<div class="container">
+  <div class="row">
+      <table id="watchlist-items">
+        <th>Sneaker Name</th>
+        <th>Release Date</th>
+        <th>Price</th>
+        <th></th>
 
-  <?php
-    while($watch = mysqli_fetch_assoc($watchlist_set)) {
+        <?php
+          while($watch = mysqli_fetch_assoc($watchlist_set)) {
 
-      echo "<tr>";
-      echo "<td><a href=\"details.php?id=" .$watch['sneaker_id'] ."&name=" .$watch['sneaker_name'] ."\">" .$watch['sneaker_name'] ."</a></td>";
-      echo "<td>" .$watch['release_date'] ."</td>";
-      echo "<td>" .$watch['price'] ."</td>";
+            echo "<tr>";
+            echo "<td><a href=\"details.php?id=" .$watch['sneaker_id'] ."&name=" .$watch['sneaker_name'] ."\">" .$watch['sneaker_name'] ."</a></td>";
+            echo "<td>" .$watch['release_date'] ."</td>";
+            echo "<td>$" .$watch['price'] ."</td>";
 
-      echo "<td>";
-      echo "<form action=\"removefromwatchlist.php\" method=\"post\">\n";
-    	echo "<input type=\"hidden\" name=\"sneaker_id\" value=" .$watch['sneaker_id'] .">\n";
-    	echo "<input type=\"submit\" value=\"Remove from Watchlist\">\n";
-    	echo "</form>\n";
-      echo "</td>";
-      echo "</tr>";
+            echo "<td>";
+            echo "<form action=\"removefromwatchlist.php\" method=\"post\">\n";
+            echo "<input type=\"hidden\" name=\"sneaker_id\" value=" .$watch['sneaker_id'] .">\n";
+            echo "<input type=\"submit\" class=\"btn btn-danger\" value=\"Remove from Watchlist\">\n";
+            echo "</form>\n";
+            echo "</td>";
+            echo "</tr>";
 
-    }
+          }
 
-    if (!empty($msg)){
-      echo "<p>$msg</p>\n";
-    }
-  ?>
+          if (!empty($msg)){
+            echo "<p>$msg</p>\n";
+          }
+        ?>
 
-</table>
-
+      </table>
+  </div>
+</div>
 
 <?php
       mysqli_free_result($watchlist_set);
