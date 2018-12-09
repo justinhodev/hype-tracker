@@ -100,6 +100,7 @@
                     echo "parse_data(" .$day. ", " .$score. ");";
                 }
             ?>
+            
             draw_chart(arr);
 
             function parse_data(day, score) {
