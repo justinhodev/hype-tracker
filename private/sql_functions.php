@@ -13,6 +13,51 @@
     return $result;
   }
 
+  // show list of brands
+  function list_all_brands() {
+    global $db;
+
+    $output = '';
+    $sql = "SELECT * FROM brands";
+    $result = mysqli_query($db, $sql);
+    confirm_result_set($result);
+
+    while ($row = mysqli_fetch_assoc($result)) {
+      $output .= '<option value="' .$row["brand_id"] . '">' .$row["brand_name"] . '</option>';
+    }
+
+    mysqli_free_result($result);
+
+    return $output;
+  }
+
+  // show all sneakers
+  function show_all_sneakers() {
+    global $db;
+
+    $output = '';
+    $sql = "SELECT * FROM sneakers INNER JOIN brands ON sneakers.brand_id=brands.brand_id";
+    $result = mysqli_query($db, $sql);
+    confirm_result_set($result);
+
+    while ($row = mysqli_fetch_assoc($result)) {
+      $output .= '<div class="col-3 my-3">';
+      $output .= '<div class="card text-center px-4" style="width: 15rem;">';
+      $output .= '<img src="data:image/jpeg;base64,'.base64_encode( $row['image'] ).'" class="card-img-top"/>';
+      $output .= '<div class="card-body">';
+      $output .= '<h6 class="card-title">'. h($row['sneaker_name']) . '</h6>';
+      $output .= '<h6 class="card-subtitle text-muted">' . h($row['brand_name']) . '</p>';
+      $output .= '<a href="./details.php?id=' .urlencode($row['sneaker_id']). '&name=' .urlencode($row['sneaker_name']). '" class="card-link">Details</a>';
+      $output .= '</div>';
+      $output .= '</div>';
+      $output .= '</div>';
+    }
+
+    mysqli_free_result($result);
+
+    return $output;
+  }
+
   // get shoe by id and name
   function get_sneaker($sneaker_id, $sneaker_name) {
     global $db;
