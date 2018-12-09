@@ -97,19 +97,19 @@
                 $data = unserialize($shoe_rank['reddit_mentions']);
 
                 foreach ($data as $day => $score) {
-                    echo "parseData(" .$day. ", " .$score. ");";
+                    echo "parse_data(" .$day. ", " .$score. ");";
                 }
             ?>
-            drawChart(arr);
+            draw_chart(arr);
 
-            function parseData(day, score) {
+            function parse_data(day, score) {
                 arr.push({
                     date: day,
                     value: score
                 })
             }
 
-            function drawChart(data) {
+            function draw_chart(data) {
                 var svgWidth = 600, svgHeight = 400;
                 var margin = { top: 20, right: 20, bottom: 30, left: 50 };
                 var width = svgWidth - margin.left - margin.right;

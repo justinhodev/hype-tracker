@@ -22,9 +22,11 @@
       </div>
     </form>
   </div>
-  <div class="row mb-5">
+  <div class="row mb-5" id="show_product">
       <?php echo show_all_sneakers(); ?>
   </div>
 </div>
+
+<script><?php include(PRIVATE_PATH . '/js/ajax.js') ?></script>
 
 <?php include(SHARED_PATH . '/public_footer.php'); ?>
