@@ -12,18 +12,24 @@
 ?>
 
 <div class="container">
-  <div class="row my-3 justify-content-end">
+  <div class="row my-3 justify-content-between">
     <form>
       <div class="form-group">
         <select name="brand" id="brand" class="form-control">
-          <option value="">Show All Sneakers</option>
+          <option value="">All Sneakers</option>
           <?php echo list_all_brands(); ?>
         </select>
       </div>
     </form>
+    <form action="GET">
+      <div class="form-group">
+        <input class="form-control" type="text" placeholder="Search" id="sneaker_search">
+      </div>
+    </form>
   </div>
+  <div id="search_result" style="display: none"></div>
   <div class="row mb-5" id="show_product">
-      <?php echo show_all_sneakers(); ?>
+    <?php echo show_all_sneakers(); ?>
   </div>
 </div>
 

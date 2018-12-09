@@ -58,6 +58,26 @@
 
   }
 
+  // search sneaker by text input
+  function search_sneaker($search) {
+    global $db;
+
+    $output = '';
+    $sql = "SELECT * FROM sneakers WHERE sneaker_name LIKE '%" .$search. "%'";
+    $result = mysqli_query($db, $sql);
+    if ($result) {
+      while ($row = mysqli_fetch_assoc($result)) {
+        $output .= '<div class="row pl-3">';
+        $output .= '<div class="col-3">';
+        $output .= '<img src="data:image/jpeg;base64,'.base64_encode( $row['image'] ).'" class="float-right" style="width:3em; height:2em;"/>';
+        $output .= '</div><div class="col-3">';
+        $output .= '<a href="./details.php?id=' .urlencode($row['sneaker_id']). '&name=' .urlencode($row['sneaker_name']). '" class="search_result">' . $row['sneaker_name'] . '</a>'; 
+        $output .= '</div></div>';
+      }
+    }
+    return $output;
+  }
+
   // show shoe by brand
   function show_sneaker_by_brand($brand_id) {
     global $db;

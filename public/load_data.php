@@ -8,4 +8,9 @@
             echo show_all_sneakers();
         }
     }
+
+    if (isset($_POST["search_data"])) {
+        $search_val = trim($_POST["search_data"]);
+        echo search_sneaker($search_val);
+    }
 ?>
