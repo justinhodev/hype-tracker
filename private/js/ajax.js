@@ -1,43 +1,82 @@
-// run functions after document has loaded
-$('document').ready(function() {
-    // ajax update shown products after select value changes
-    $('#brand').change(function() {
-        var brand_id = $(this).val();
-        $.ajax({
-            url: "./load_data.php",
-            method: "POST",
-            data: {brand_id : brand_id},
-            success: function (data) {
-                $('#show_product').html(data);
-            }
-        });
-    });
-    
-    // update view if user enters characters into search box
-    $('#sneaker_search').unbind().keyup(function(e) {
-        var value = $(this).val();
-        if (value.length >= 1) {
-            search_sneaker(value);
-        } else {
-            $('#search_result').hide();
-            $('#show_product').show();
-        }
-    });
+const products = document.getElementById('show_product');
+const searchResult = document.getElementById('search_result');
+const searchBox = document.getElementById('sneaker_search');
+const brandSelector = document.getElementById('brand');
 
-    // ajax post call to return search results from search box
-    function search_sneaker(val) {
-        $('#show_product').hide();
-        $('#search_result').show();
-        $.post('./load_data.php', {
-            'search_data' : val
-        }, function(data) {
-            if (data != "") {
-                $('#search_result').html(data);
-            } else {
-                // default view if no results
-                $('#search_result').html("<div class=\"row pl-3\"><div class=\"col-3\">No Result Found...</div></div>");
-            }
-        });
-    }
-});
+document.onreadystatechange = function () {
+  if (document.readyState === 'complete') {
+    searchBox.addEventListener('input', filterBySearch);
+    brandSelector.addEventListener('change', filterByBrand)
+  }
+}
 
+/*
+ *
+ * Limit Products by Brand buttons
+ *
+ * @param {integer} brand - brand id
+ * @return {void} updates product html
+ *
+ */
+function filterByBrand(brand) {
+  brandId = brand.target.value;
+  const sneakers = await searchSneaker('brand_id', brandId);
+  if (sneakers === null) return;
+  products.innerHTML = sneakers;
+}
+
+/*
+ * Limit Products by Search Phrase
+ *
+ * @param {string} search - value from input
+ * @return {void} updates search result html
+ *
+ */
+function filterBySearch(search) {
+
+  let searchValue = search.target.value;
+
+  if (searchValue.length <= 0) {
+    searchResult.style.display = 'none';
+    products.style.display = 'block';
+    return;
+  }
+  
+  const sneakers = await searchSneaker('search_data', searchValue);
+
+  if (sneakers !== "") {
+    searchResult.innerHTML = sneakers;
+    return;
+  }
+
+  searchResult.innerHTML = "<div class=\"row pl-3\"><div class=\"col-3\">No Result Found...</div></div>";
+}
+
+/*
+ * Send an async request with search term
+ *
+ * @param {string} type - search type
+ * @param {string} value - search value
+ * @return {text} the formatted HTML with data
+ *
+ */
+async function searchSneaker(type, value) {
+  
+  let searchData = new FormData();
+  searchData.append(type, value);
+
+  const response = await fetch('./load_data.php', {
+    method: 'POST',
+    mode: 'same-origin',
+    cache: 'no-cache',
+    credentials: 'omit',
+    headers: {
+      'Content-Type': 'application/x-www-form-urlencoded'
+    },
+    redirect: 'error',
+    body: searchData
+  })
+  .catch(() => console.error('Cannot reach server'));
+
+  return response.text();
+}
