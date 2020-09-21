@@ -1,38 +1,61 @@
-# HypeTracker
+<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
 
-**THIS PROJECT IS CURRENTLY BEING REWORKED, SEE [FEAT-ADD-LARAVEL](https://github.com/justinhodev/hype-tracker/tree/feat-add-laravel) BRANCH FOR CURRENT PROGRESS**
+<p align="center">
+<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
+<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/d/total.svg" alt="Total Downloads"></a>
+<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/v/stable.svg" alt="Latest Stable Version"></a>
+<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/license.svg" alt="License"></a>
+</p>
 
----
+## About Laravel
 
-Full stack web application to read data from public APIs (Twitter, Reddit) and form visualizations
+Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
 
-## Project Goals
+- [Simple, fast routing engine](https://laravel.com/docs/routing).
+- [Powerful dependency injection container](https://laravel.com/docs/container).
+- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
+- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
+- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
+- [Robust background job processing](https://laravel.com/docs/queues).
+- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
 
-Show data about sneakers and statistics about the sneaker’s attention / mentions on social media platforms such as Twitter, or Reddit. Learn and adopt SQL schemas and a RDBMS(MariaDB) in a full stack PHP application.
+Laravel is accessible, powerful, and provides tools required for large, robust applications.
 
-## Getting Started
+## Learning Laravel
 
-1. Fork repo to local env
-2. Insert SQL file into SQL db
-3. Serve /public and /private file from htdocs of Apache Web server
- 
-## Preview
- 
-![Home Page](https://drive.google.com/uc?id=1xU7lYyvumVjkm1PG30kXKnk6x-kq2V6b)
- 
-![Details Page](https://drive.google.com/uc?id=1V51ncFXquCTAvmTnvHwCG9HVi4ARSBHf)
- 
- 
-## Relational Schema
+Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
 
-Sneaker (sneaker_id, brand_id, name, release_date, image, price) Brand (brand_id, name, logo)
-Ranking (sneaker_id, score, number_of_mentions, platform) Watchlist (member_id, sneaker_id)
-Member (member_id, firstname, lastname, email, password)
+If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1500 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
 
-## ER Diagram
- 
-![ER Diagram for HypeTracker](https://drive.google.com/uc?id=19X_iqno1i3W6VNwfzVnspqPaOSlnhO2o)
- 
-## SQL Diagram
- 
-![SQL Diagram for HypeTracker](https://drive.google.com/uc?id=1FCBYIPStsIxyOIXcg5Hy2jnWGgCUFP5s)
+## Laravel Sponsors
+
+We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+
+### Premium Partners
+
+- **[Vehikl](https://vehikl.com/)**
+- **[Tighten Co.](https://tighten.co)**
+- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
+- **[64 Robots](https://64robots.com)**
+- **[Cubet Techno Labs](https://cubettech.com)**
+- **[Cyber-Duck](https://cyber-duck.co.uk)**
+- **[Many](https://www.many.co.uk)**
+- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
+- **[DevSquad](https://devsquad.com)**
+- **[OP.GG](https://op.gg)**
+
+## Contributing
+
+Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+
+## Code of Conduct
+
+In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+
+## Security Vulnerabilities
+
+If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+
+## License
+
+The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
