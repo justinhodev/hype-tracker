@@ -24,3 +24,12 @@
 # Install Node.js v10.x
 #curl -sL https://deb.nodesource.com/setup_10.x | sudo -E bash -
 #sudo apt-get install -y nodejs
+
+# Start in project directory after ssh
+BASH_FILE=/home/vagrant/.bashrc
+PROJECT_DIR=/home/vagrant/code
+grep -Fq "cd $PROJECT_DIR" $BASH_FILE || echo -e "\\n# Start in the project directory\\ncd $PROJECT_DIR" >> $BASH_FILE
+cd $PROJECT_DIR || exit 1
+
+# Run database migrations
+php artisan migrate
