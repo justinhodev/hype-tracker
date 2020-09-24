@@ -70,4 +70,37 @@ class Sneaker extends Model
         return ucwords($value);
 
     }
+
+    /**
+     * Set Sneaker name
+     *
+     * @param string $value
+     * @return void
+     */
+    public function setNameAttribute($value): void
+    {
+        $this->attributes['Name'] = strtolower($value);
+    }
+
+    /**
+     * Set Sneaker price
+     *
+     * @param int $value
+     * @return int
+     */
+    public function setPriceAttribute($value): void
+    {
+        $this->attributes['Price'] = $value;
+    }
+
+    /**
+     * Set Sneaker brand
+     *
+     * @param string $value
+     * @return void
+     */
+    public function setBrandAttribute($value): void
+    {
+        $this->attributes['Brand'] = $value;
+    }
 }

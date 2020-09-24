@@ -68,4 +68,37 @@ class Member extends Model
     {
         return $value;
     }
+
+    /**
+     * Set Member name
+     *
+     * @param string $value
+     * @return void
+     */
+    public function setNameAttribute($value): void
+    {
+        $this->attributes['Name'] = strtolower($value);
+    }
+
+    /**
+     * Set Member email
+     *
+     * @param string $value
+     * @return void
+     */
+    public function setEmailAttribute($value): void
+    {
+        $this->attributes['Email'] = $value;
+    }
+
+    /**
+     * Set Member password
+     *
+     * @param string $value
+     * @return void
+     */
+    public function setPasswordAttribute($value): void
+    {
+        $this->attributes['Password'] = value;
+    }
 }
