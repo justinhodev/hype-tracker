@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Sneaker extends Model
 {
@@ -102,5 +103,15 @@ class Sneaker extends Model
     public function setBrandAttribute($value): void
     {
         $this->attributes['Brand'] = $value;
+    }
+
+    /**
+     * Get all Rankings for a Sneaker
+     *
+     * @return HasMany
+     */
+    public function rankings(): HasMany
+    {
+        return $this->hasMany('App\Models\Ranking', 'SneakerName', 'Name');
     }
 }

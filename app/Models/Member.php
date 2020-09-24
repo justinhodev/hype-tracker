@@ -101,4 +101,13 @@ class Member extends Model
     {
         $this->attributes['Password'] = value;
     }
+
+    /**
+     * Get all sneakers for a user
+     *
+     * @return BelongsToMany
+     */
+    public function sneakers(): BelongsToMany
+    {
+        return $this->belongsToMany('App\Models\Sneaker', 'Watchlists', 'MemberEmail', 'SneakerName');
 }
