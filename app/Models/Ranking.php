@@ -38,6 +38,15 @@ class Ranking extends Model
      */
     public $incrementing = false;
 
+    /**
+     * The attributes that should be mutated to dates
+     *
+     * @var array
+     */
+    protected $dates = [
+        'Date',
+    ];
+
     // ========================================================================
     // override default Model.php because it cannot have composite primary keys
     // implementation from https://stackoverflow.com/questions/430/86722/composite-primary-key-with-eloquent

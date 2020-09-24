@@ -39,6 +39,15 @@ class Sneaker extends Model
     public $incrementing = false;
 
     /**
+     * The attributes that should be cast
+     *
+     * @var array
+     */
+    protected $casts = [
+        'Price' => 'decimal:2',
+    ];
+
+    /**
      * Get Sneaker name
      *
      * @param string $value
@@ -47,17 +56,6 @@ class Sneaker extends Model
     public function getNameAttribute($value): string
     {
         return ucwords($value);
-    }
-
-    /**
-     * Get Sneaker price
-     *
-     * @param int $value
-     * @return int
-     */
-    public function getPriceAttribute($value): int
-    {
-        return $value;
     }
 
     /**
@@ -81,17 +79,6 @@ class Sneaker extends Model
     public function setNameAttribute($value): void
     {
         $this->attributes['Name'] = strtolower($value);
-    }
-
-    /**
-     * Set Sneaker price
-     *
-     * @param int $value
-     * @return int
-     */
-    public function setPriceAttribute($value): void
-    {
-        $this->attributes['Price'] = $value;
     }
 
     /**

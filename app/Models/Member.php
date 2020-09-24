@@ -48,28 +48,6 @@ class Member extends Model
     }
 
     /**
-     * Get Member email
-     *
-     * @param string $value
-     * @return string
-     */
-    public function getEmailAttribute($value): string
-    {
-        return $value;
-    }
-
-    /**
-     * Get Member password
-     *
-     * @param string $value
-     * @return string
-     */
-    public function getPasswordAttribute($value): string
-    {
-        return $value;
-    }
-
-    /**
      * Set Member name
      *
      * @param string $value
@@ -78,28 +56,6 @@ class Member extends Model
     public function setNameAttribute($value): void
     {
         $this->attributes['Name'] = strtolower($value);
-    }
-
-    /**
-     * Set Member email
-     *
-     * @param string $value
-     * @return void
-     */
-    public function setEmailAttribute($value): void
-    {
-        $this->attributes['Email'] = $value;
-    }
-
-    /**
-     * Set Member password
-     *
-     * @param string $value
-     * @return void
-     */
-    public function setPasswordAttribute($value): void
-    {
-        $this->attributes['Password'] = value;
     }
 
     /**
