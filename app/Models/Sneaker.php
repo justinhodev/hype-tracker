@@ -36,4 +36,38 @@ class Sneaker extends Model
      * @var bool
      */
     public $incrementing = false;
+
+    /**
+     * Get Sneaker name
+     *
+     * @param string $value
+     * @return string
+     */
+    public function getNameAttribute($value): string
+    {
+        return ucwords($value);
+    }
+
+    /**
+     * Get Sneaker price
+     *
+     * @param int $value
+     * @return int
+     */
+    public function getPriceAttribute($value): int
+    {
+        return $value;
+    }
+
+    /**
+     * Get Sneaker brand
+     *
+     * @param string $value
+     * @return string
+     */
+    public function getBrandAttribute($value): string
+    {
+        return ucwords($value);
+
+    }
 }
