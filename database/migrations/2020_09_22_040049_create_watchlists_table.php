@@ -17,16 +17,12 @@ class CreateWatchlistsTable extends Migration
             $table->engine = 'InnoDB';
             $table->charset = 'utf8mb4';
             $table->collation = 'utf8mb4_unicode_ci';
-            $table->string('SneakerName', 100)->nullable(false);
-            $table->string('MemberEmail', 100)->nullable(false);
+            $table->id();
+            $table->foreignId('SneakerId')->constrained('Sneakers')
+                ->onDelete('cascade')->onUpdate('cascade');
+            $table->foreignId('MemberId')->constrained('Members')
+                ->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();
-            $table->primary(['SneakerName', 'MemberEmail'], 'PK_Watchlists');
-            $table->foreign('SneakerName', 'FK_Watchlists_Sneakers')
-                  ->references('Name')->on('Sneakers')
-                  ->onUpdate('cascade')->onDelete('cascade');
-            $table->foreign('MemberEmail', 'FK_Watchlists_Members')
-                  ->references('Email')->on('Members')
-                  ->onUpdate('cascade')->onDelete('cascade');
         });
     }
 

@@ -17,11 +17,11 @@ class CreateSneakersTable extends Migration
             $table->engine = 'InnoDB';
             $table->charset = 'utf8mb4';
             $table->collation = 'utf8mb4_unicode_ci';
-            $table->string('Name', 100)->nullable(false);
+            $table->id();
+            $table->string('Name', 100)->nullable(false)->unique();
             $table->decimal('Price', 8, 2)->unsigned();
             $table->string('Brand', 40)->nullable(false);
             $table->timestamps();
-            $table->primary('Name', 'PK_Sneakers');
         });
     }
 

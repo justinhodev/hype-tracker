@@ -17,15 +17,13 @@ class CreateRankingsTable extends Migration
             $table->engine = 'InnoDB';
             $table->charset = 'utf8mb4';
             $table->collation = 'utf8mb4_unicode_ci';
+            $table->id();
+            $table->foreignId('SneakerId')->constrained('Sneakers')
+                ->onDelete('cascade')->onUpdate('cascade');
             $table->string('Platform', 100)->nullable(false);
             $table->date('Date')->nullable(false);
-            $table->string('SneakerName', 100)->nullable(false);
             $table->integer('Mentions')->unsigned();
             $table->timestamps();
-            $table->primary(['Platform', 'Date', 'SneakerName'], 'PK_Rankings');
-            $table->foreign('SneakerName', 'FK_Rankings_Sneakers')
-                  ->references('Name')->on('Sneakers')
-                  ->onUpdate('cascade')->onDelete('cascade');
         });
     }
 

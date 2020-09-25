@@ -17,11 +17,11 @@ class CreateMembersTable extends Migration
             $table->engine = 'InnoDB';
             $table->charset = 'utf8mb4';
             $table->collation = 'utf8mb4_unicode_ci';
+            $table->id();
             $table->string('Name', 100)->nullable(false);
-            $table->string('Email', 100)->nullable(false);
+            $table->string('Email', 100)->nullable(false)->unique();
             $table->string('Password', 100)->nullable(false);
             $table->timestamps();
-            $table->primary('Email', 'PK_Members');
         });
     }
 
