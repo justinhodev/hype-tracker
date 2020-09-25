@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -66,4 +67,5 @@ class Member extends Model
     public function sneakers(): BelongsToMany
     {
         return $this->belongsToMany('App\Models\Sneaker', 'Watchlists', 'MemberEmail', 'SneakerName');
+    }
 }
