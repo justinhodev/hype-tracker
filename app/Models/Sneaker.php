@@ -18,27 +18,6 @@ class Sneaker extends Model
     protected $table = 'Sneakers';
 
     /**
-     * Primary Key - use name
-     *
-     * @var string
-     */
-    protected $primaryKey = 'Name';
-
-    /**
-     * Change PK type to string
-     *
-     * @var string
-     */
-    protected $keyType = 'string';
-
-    /**
-     * Stop auto-increment for non-int PK
-     *
-     * @var bool
-     */
-    public $incrementing = false;
-
-    /**
      * The attributes that should be cast
      *
      * @var array
@@ -89,7 +68,7 @@ class Sneaker extends Model
      */
     public function setBrandAttribute($value): void
     {
-        $this->attributes['Brand'] = $value;
+        $this->attributes['Brand'] = strtolower($value);
     }
 
     /**
@@ -99,6 +78,6 @@ class Sneaker extends Model
      */
     public function rankings(): HasMany
     {
-        return $this->hasMany('App\Models\Ranking', 'SneakerName', 'Name');
+        return $this->hasMany('App\Models\Ranking', 'SneakerId', 'id');
     }
 }

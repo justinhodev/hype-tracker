@@ -24,9 +24,10 @@ class RankingFactory extends Factory
     public function definition()
     {
         return [
-            'SneakerName' => Sneaker::factory(),
+            'SneakerId' => Sneaker::factory(),
             'Platform' => $this->faker->company,
             'Date' => $this->faker->date(),
+            'Mentions' => $this->faker->randomNumber(),
         ];
     }
 }

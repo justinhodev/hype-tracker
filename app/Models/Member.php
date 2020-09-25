@@ -17,27 +17,6 @@ class Member extends Model
     protected $table = 'Members';
 
     /**
-     * Primary Key - use name
-     *
-     * @var string
-     */
-    protected $primaryKey = 'Email';
-
-    /**
-     * Change PK type to string
-     *
-     * @var string
-     */
-    protected $keyType = 'string';
-
-    /**
-     * Stop auto-increment for non-int PK
-     *
-     * @var bool
-     */
-    public $incrementing = false;
-
-    /**
      * Get Member name
      *
      * @param string $value
@@ -66,6 +45,6 @@ class Member extends Model
      */
     public function sneakers(): BelongsToMany
     {
-        return $this->belongsToMany('App\Models\Sneaker', 'Watchlists', 'MemberEmail', 'SneakerName');
+        return $this->belongsToMany('App\Models\Sneaker', 'Watchlists', 'MemberId', 'SneakerId');
     }
 }
