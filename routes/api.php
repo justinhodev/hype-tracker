@@ -16,8 +16,6 @@ use App\Http\Controllers\API\SneakerController;
 |
 */
 
-Route::prefix('api')->group(function() {
-    Route::apiResources([
-        'sneakers', SneakerController::class,
-    ]);
-});
+Route::apiResources([
+    'sneakers' => SneakerController::class,
+]);
