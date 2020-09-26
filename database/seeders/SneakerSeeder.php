@@ -2,8 +2,8 @@
 
 namespace Database\Seeders;
 
-use App\Models\Sneaker;
 use App\Models\Ranking;
+use App\Models\Sneaker;
 use Illuminate\Database\Seeder;
 
 class SneakerSeeder extends Seeder

@@ -11,14 +11,14 @@ class Sneaker extends Model
     use HasFactory;
 
     /**
-     * Use PascalCase for tables
+     * Use PascalCase for tables.
      *
      * @var string
      */
     protected $table = 'Sneakers';
 
     /**
-     * The attributes that should be cast
+     * The attributes that should be cast.
      *
      * @var array
      */
@@ -27,7 +27,7 @@ class Sneaker extends Model
     ];
 
     /**
-     * Get Sneaker name
+     * Get Sneaker name.
      *
      * @param string $value
      * @return string
@@ -38,7 +38,7 @@ class Sneaker extends Model
     }
 
     /**
-     * Get Sneaker brand
+     * Get Sneaker brand.
      *
      * @param string $value
      * @return string
@@ -46,11 +46,10 @@ class Sneaker extends Model
     public function getBrandAttribute($value): string
     {
         return ucwords($value);
-
     }
 
     /**
-     * Set Sneaker name
+     * Set Sneaker name.
      *
      * @param string $value
      * @return void
@@ -61,7 +60,7 @@ class Sneaker extends Model
     }
 
     /**
-     * Set Sneaker brand
+     * Set Sneaker brand.
      *
      * @param string $value
      * @return void
@@ -72,7 +71,7 @@ class Sneaker extends Model
     }
 
     /**
-     * Get all Rankings for a Sneaker
+     * Get all Rankings for a Sneaker.
      *
      * @return HasMany
      */
