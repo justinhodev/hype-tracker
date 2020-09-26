@@ -10,7 +10,7 @@ use Tests\TestCase;
 class SneakerApiUnitTest extends TestCase
 {
     /**
-     * Get All Sneakers
+     * Get All Sneakers.
      *
      * @return void
      */
@@ -21,4 +21,21 @@ class SneakerApiUnitTest extends TestCase
         $response->assertStatus(200);
     }
 
+    /**
+     * Get Sneaker By Id
+     *
+     * @return void
+     */
+    public function testGetSneakerById()
+    {
+        $data = 1;
+
+        $response = $this->json('GET', "/api/sneakers/{$data}");
+
+        $response->dump();
+
+        $response->assertStatus(200);
+
+        $response->assertJsonFragment(['id' => $data]);
+    }
 }
