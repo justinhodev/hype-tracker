@@ -10,7 +10,7 @@ use Tests\TestCase;
 class SneakerApiUnitTest extends TestCase
 {
     /**
-     * Get Sneaker By Id
+     * Get Sneaker By Id.
      *
      * @return void
      */
