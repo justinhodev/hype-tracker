@@ -7,7 +7,7 @@ use Illuminate\Http\Resources\Json\ResourceCollection;
 class SneakerCollection extends ResourceCollection
 {
     /**
-     * The resource this collection collects
+     * The resource this collection collects.
      *
      * @var string
      */

@@ -39,7 +39,7 @@ class SneakerController extends Controller
      */
     public function show($id)
     {
-       return new SneakerResource(Sneaker::find($id));
+        return new SneakerResource(Sneaker::find($id));
     }
 
     /**
