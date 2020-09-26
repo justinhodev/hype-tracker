@@ -32,10 +32,22 @@ class SneakerApiUnitTest extends TestCase
 
         $response = $this->json('GET', "/api/sneakers/{$data}");
 
-        $response->dump();
-
         $response->assertStatus(200);
 
         $response->assertJsonFragment(['id' => $data]);
+    }
+
+    /**
+     * Get All Rankings For Sneaker By Id.
+     *
+     * @return void
+     */
+    public function testGetAllRankingsForSneakerById()
+    {
+        $sneakerId = 1;
+
+        $response = $this->json('GET', "/api/sneakers/{$sneakerId}/rankings");
+
+        $response->assertStatus(200);
     }
 }
