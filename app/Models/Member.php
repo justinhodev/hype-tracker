@@ -2,22 +2,22 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class Member extends Model
 {
     use HasFactory;
     /**
-     * Use PascalCase for tables
+     * Use PascalCase for tables.
      *
      * @var string
      */
     protected $table = 'Members';
 
     /**
-     * Get Member name
+     * Get Member name.
      *
      * @param string $value
      * @return string
@@ -28,7 +28,7 @@ class Member extends Model
     }
 
     /**
-     * Set Member name
+     * Set Member name.
      *
      * @param string $value
      * @return void
@@ -39,7 +39,7 @@ class Member extends Model
     }
 
     /**
-     * Get all sneakers for a user
+     * Get all sneakers for a user.
      *
      * @return BelongsToMany
      */
