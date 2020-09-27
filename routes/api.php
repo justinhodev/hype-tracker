@@ -1,7 +1,7 @@
 <?php
 
-use App\Http\Controllers\API\SneakerController;
 use App\Http\Controllers\API\RankingController;
+use App\Http\Controllers\API\SneakerController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
