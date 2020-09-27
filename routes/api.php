@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\API\SneakerController;
+use App\Http\Controllers\API\RankingController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -17,4 +18,5 @@ use Illuminate\Support\Facades\Route;
 
 Route::apiResources([
     'sneakers' => SneakerController::class,
+    'sneakers.rankings' => RankingController::class,
 ]);
