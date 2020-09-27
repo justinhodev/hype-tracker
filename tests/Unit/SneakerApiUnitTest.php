@@ -2,6 +2,7 @@
 
 namespace Tests\Unit;
 
+use Carbon\Carbon;
 use Tests\TestCase;
 
 /**
@@ -47,6 +48,22 @@ class SneakerApiUnitTest extends TestCase
         $sneakerId = 1;
 
         $response = $this->json('GET', "/api/sneakers/{$sneakerId}/rankings");
+
+        $response->assertStatus(200);
+    }
+
+    /**
+     * Get Rankings Filter By Platform And Date.
+     *
+     * @return void
+     */
+    public function testGetRankingsFilterByPlatformAndDate()
+    {
+        $sneakerId = 1;
+        $platform = 'reddit';
+        $date = Carbon::now()->toDateString();
+
+        $response = $this->json('GET', "/api/sneakers/{$sneakerId}/rankings?platform={$platform}+date={$date}");
 
         $response->assertStatus(200);
     }
