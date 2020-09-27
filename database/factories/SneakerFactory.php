@@ -25,7 +25,7 @@ class SneakerFactory extends Factory
         return [
             'Name' => $this->faker->text(100),
             'Price' => $this->faker->randomFloat(2, 29.99, 10000.00),
-            'Brand' => $this->faker->company,
+            'Brand' => $this->faker->text(40),
         ];
     }
 }
