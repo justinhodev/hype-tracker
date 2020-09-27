@@ -55,7 +55,7 @@ class RankingController extends Controller
 
         $rankingsQuery = Ranking::where('SneakerId', $sneaker);
         if (count($queryParams) > 0) {
-            $rankingsQuery->where(function($query) use ($queryParams) {
+            $rankingsQuery->where(function ($query) use ($queryParams) {
                 $query->where($queryParams);
             });
         }
