@@ -17,7 +17,7 @@ class SneakerSeeder extends Seeder
     {
         Sneaker::factory()
             ->times(50)
-            ->hasRankings(100)
+            ->hasRankings(10)
             ->create();
     }
 }

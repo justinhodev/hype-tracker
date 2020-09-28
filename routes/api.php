@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\API\RankingController;
+use App\Http\Controllers\API\SneakerController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -14,6 +16,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
-});
+Route::apiResources([
+    'sneakers' => SneakerController::class,
+    'sneakers.rankings' => RankingController::class,
+]);
