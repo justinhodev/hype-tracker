@@ -33,3 +33,6 @@ cd $PROJECT_DIR || exit 1
 
 # Run database migrations
 php artisan migrate
+
+# Install npm modules and provision Jetstream / Livewire
+npm install && npm run dev

@@ -16,9 +16,9 @@ class RankingResource extends JsonResource
     {
         return [
             'id' => $this->id,
-            'platform' => $this->Platform,
-            'date' => $this->Date,
-            'mentions' => $this->Mentions,
+            'platform' => $this->platform,
+            'date' => $this->date,
+            'mentions' => $this->mentions,
         ];
     }
 }

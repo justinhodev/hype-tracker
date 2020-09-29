@@ -16,7 +16,7 @@ class Ranking extends Model
      *
      * @var string
      */
-    protected $table = 'Rankings';
+    protected $table = 'rankings';
 
     /**
      * The attributes that should be mutated to dates.
@@ -24,7 +24,7 @@ class Ranking extends Model
      * @var array
      */
     protected $dates = [
-        'Date',
+        'date',
     ];
 
     /**

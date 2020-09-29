@@ -13,14 +13,14 @@ class CreateWatchlistsTable extends Migration
      */
     public function up()
     {
-        Schema::create('Watchlists', function (Blueprint $table) {
+        Schema::create('watchlists', function (Blueprint $table) {
             $table->engine = 'InnoDB';
             $table->charset = 'utf8mb4';
             $table->collation = 'utf8mb4_unicode_ci';
             $table->id();
-            $table->foreignId('SneakerId')->constrained('Sneakers')
+            $table->foreignId('sneaker_id')->constrained('sneakers')
                 ->onDelete('cascade')->onUpdate('cascade');
-            $table->foreignId('MemberId')->constrained('Members')
+            $table->foreignId('user_id')->constrained('users')
                 ->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();
         });
@@ -33,6 +33,6 @@ class CreateWatchlistsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('Watchlists');
+        Schema::dropIfExists('watchlists');
     }
 }
