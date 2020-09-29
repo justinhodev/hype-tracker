@@ -16,9 +16,9 @@ class SneakerResource extends JsonResource
     {
         return [
             'id' => $this->id,
-            'name' => $this->Name,
-            'price' => $this->Price,
-            'brand' => $this->Brand,
+            'name' => $this->name,
+            'price' => $this->price,
+            'brand' => $this->brand,
         ];
     }
 }

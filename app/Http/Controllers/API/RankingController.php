@@ -17,7 +17,7 @@ class RankingController extends Controller
      */
     public function index($sneakerId)
     {
-        return new RankingCollection(Ranking::where('SneakerId', $sneakerId)->get());
+        return new RankingCollection(Ranking::where('sneaker_id', $sneakerId)->get());
     }
 
     /**
@@ -41,8 +41,8 @@ class RankingController extends Controller
     {
         // todo(http): sanitize request params.
         $queryParams = [
-            ['Platform'],
-            ['Date'],
+            ['platform'],
+            ['date'],
         ];
 
         foreach ($queryParams as $index => $param) {
@@ -53,7 +53,7 @@ class RankingController extends Controller
             $queryParams[$index][] = $request->query($param);
         }
 
-        $rankingsQuery = Ranking::where('SneakerId', $sneaker);
+        $rankingsQuery = Ranking::where('sneaker_id', $sneaker);
         if (count($queryParams) > 0) {
             $rankingsQuery->where(function ($query) use ($queryParams) {
                 $query->where($queryParams);

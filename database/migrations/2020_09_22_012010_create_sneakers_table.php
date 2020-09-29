@@ -13,14 +13,14 @@ class CreateSneakersTable extends Migration
      */
     public function up()
     {
-        Schema::create('Sneakers', function (Blueprint $table) {
+        Schema::create('sneakers', function (Blueprint $table) {
             $table->engine = 'InnoDB';
             $table->charset = 'utf8mb4';
             $table->collation = 'utf8mb4_unicode_ci';
             $table->id();
-            $table->string('Name', 100)->nullable(false)->unique();
-            $table->decimal('Price', 8, 2)->unsigned();
-            $table->string('Brand', 40)->nullable(false);
+            $table->string('name', 100)->nullable(false)->unique();
+            $table->decimal('price', 8, 2)->unsigned();
+            $table->string('brand', 40)->nullable(false);
             $table->timestamps();
         });
     }
@@ -32,6 +32,6 @@ class CreateSneakersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('Sneakers');
+        Schema::dropIfExists('sneakers');
     }
 }

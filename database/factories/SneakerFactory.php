@@ -23,9 +23,9 @@ class SneakerFactory extends Factory
     public function definition()
     {
         return [
-            'Name' => $this->faker->text(100),
-            'Price' => $this->faker->randomFloat(2, 29.99, 10000.00),
-            'Brand' => $this->faker->text(40),
+            'name' => $this->faker->text(100),
+            'price' => $this->faker->randomFloat(2, 29.99, 10000.00),
+            'brand' => $this->faker->text(40),
         ];
     }
 }

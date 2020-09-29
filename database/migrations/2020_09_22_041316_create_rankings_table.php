@@ -13,16 +13,16 @@ class CreateRankingsTable extends Migration
      */
     public function up()
     {
-        Schema::create('Rankings', function (Blueprint $table) {
+        Schema::create('rankings', function (Blueprint $table) {
             $table->engine = 'InnoDB';
             $table->charset = 'utf8mb4';
             $table->collation = 'utf8mb4_unicode_ci';
             $table->id();
-            $table->foreignId('SneakerId')->constrained('Sneakers')
+            $table->foreignId('sneaker_id')->constrained('sneakers')
                 ->onDelete('cascade')->onUpdate('cascade');
-            $table->string('Platform', 100)->nullable(false);
-            $table->date('Date')->nullable(false);
-            $table->integer('Mentions')->unsigned();
+            $table->string('platform', 100)->nullable(false);
+            $table->date('date')->nullable(false);
+            $table->integer('mentions')->unsigned();
             $table->timestamps();
         });
     }
@@ -34,6 +34,6 @@ class CreateRankingsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('Rankings');
+        Schema::dropIfExists('rankings');
     }
 }

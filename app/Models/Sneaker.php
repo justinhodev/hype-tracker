@@ -15,7 +15,7 @@ class Sneaker extends Model
      *
      * @var string
      */
-    protected $table = 'Sneakers';
+    protected $table = 'sneakers';
 
     /**
      * The attributes that should be cast.
@@ -23,7 +23,7 @@ class Sneaker extends Model
      * @var array
      */
     protected $casts = [
-        'Price' => 'decimal:2',
+        'price' => 'decimal:2',
     ];
 
     /**
@@ -56,7 +56,7 @@ class Sneaker extends Model
      */
     public function setNameAttribute($value): void
     {
-        $this->attributes['Name'] = strtolower($value);
+        $this->attributes['name'] = strtolower($value);
     }
 
     /**
@@ -67,7 +67,7 @@ class Sneaker extends Model
      */
     public function setBrandAttribute($value): void
     {
-        $this->attributes['Brand'] = strtolower($value);
+        $this->attributes['brand'] = strtolower($value);
     }
 
     /**
@@ -77,6 +77,6 @@ class Sneaker extends Model
      */
     public function rankings(): HasMany
     {
-        return $this->hasMany('App\Models\Ranking', 'SneakerId', 'id');
+        return $this->hasMany('App\Models\Ranking', 'sneaker_id', 'id');
     }
 }
