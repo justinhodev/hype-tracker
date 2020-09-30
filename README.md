@@ -1,5 +1,9 @@
 # HypeTracker
 
+**THIS PROJECT IS CURRENTLY BEING REWORKED, SEE [FEAT-ADD-LARAVEL](https://github.com/justinhodev/hype-tracker/tree/feat-add-laravel) BRANCH FOR CURRENT PROGRESS**
+
+---
+
 Full stack web application to read data from public APIs (Twitter, Reddit) and form visualizations
 
 ## Project Goals
