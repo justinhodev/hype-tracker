@@ -15,8 +15,8 @@ class UserSeeder extends Seeder
     public function run()
     {
         User::factory()
-            ->times(20)
-            ->hasSneakers(20)
+            ->times(2)
+            ->hasSneakers(5)
             ->create();
     }
 }
