@@ -1,61 +1,57 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
+![HypeTracker](https://github.com/hype-tracker/tree/feat-add-laravel/docs/logo.png)
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/d/total.svg" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/v/stable.svg" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/license.svg" alt="License"></a>
-</p>
+![Current Version](https://img.shields.io/github/v/tag/justinhodev/hype-tracker?style=flat-square)
+![StyleCI](https://github.styleci.io/repos/173895523/shield?branch=feat-add-laravel)
+![License](https://img.shields.io/github/license/justinhodev/hype-tracker?style=flat-square)
 
-## About Laravel
+---
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+**THIS IS THE V2 BRANCH OF HYPETRACKER - REFACTORING V1 ONTO LARAVEL**
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+HypeTracker is a data aggregator application for social media 'impressions' on sneakers bought and sold in the aftermarket.
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+See my blog detailing [what HypeTracker is](https://blog.justinho.studio/designing-a-database-to-track-my-sneakers) and [why I am refactoring it](https://blog.justinho.studio/revisiting-my-project-from-2018)
 
-## Learning Laravel
+# Changelog / Goals for V2
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+- ~~migrate database schema~~ see PR #4
+- ~~migrate internal sneakers API~~ see PR #7
+- migrate front-end
+- deploy as demo / push as v2
+- add social media api scraping
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1500 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+# Getting Started
 
-## Laravel Sponsors
+## Requirements
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+### [Homestead](https://laravel.com/docs/master/homestead)
 
-### Premium Partners
+- PHP ^7.3
+- Composer ^1.10.13
+- Vagrant ^2.2.10 (with your choice of virtualization layer)
+- (example) VirtualBox ^6.1.14 (with Vagrant's VirtualBox provider)
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[OP.GG](https://op.gg)**
+```sh
+$ git clone https://github.com/justinhodev/hype-tracker.git
+$ cd hype-tracker
 
-## Contributing
+# Install Composer Dependencies
+$ composer install
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+# Prepare config for Homestead
+$ composer homestead
 
-## Code of Conduct
+# Provision the VM
+$ vagrant up
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+# SSH into Vagrant Box
+$ vagrant ssh
+```
 
-## Security Vulnerabilities
+### Docker
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+coming soon
 
-## License
+# Database Entity Relationship Model
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+![ER Diagram](https://github.com/hype-tracker/tree/feat-add-laravel/docs/er-diagram.png)
