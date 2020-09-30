@@ -14,8 +14,8 @@ See my blog detailing [what HypeTracker is](https://blog.justinho.studio/designi
 
 # Changelog / Goals for V2
 
-- ~~migrate database schema~~ see PR #4
-- ~~migrate internal sneakers API~~ see PR #7
+- ~~migrate database schema~~ see PR [#4](https://github.com/justinhodev/hype-tracker/pull/4)
+- ~~migrate internal sneakers API~~ see PR [#7](https://github.com/justinhodev/hype-tracker/pull/7)
 - migrate front-end
 - deploy as demo / push as v2
 - add social media api scraping
