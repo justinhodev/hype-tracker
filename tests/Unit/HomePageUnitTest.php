@@ -2,17 +2,23 @@
 
 namespace Tests\Unit;
 
-use PHPUnit\Framework\TestCase;
+use Tests\TestCase;
 
+/**
+ * @group unit
+ */
 class HomePageUnitTest extends TestCase
 {
     /**
-     * A basic unit test example.
+     * Get Home Page.
      *
      * @return void
      */
-    public function testExample()
+    public function testGetHomePage()
     {
-        $this->assertTrue(true);
+        $response = $this->get('/');
+
+        $response->assertStatus(200);
+        $response->assertSeeLivewire('ShowSneakers');
     }
 }
