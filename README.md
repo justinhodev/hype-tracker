@@ -1,4 +1,4 @@
-![HypeTracker](https://github.com/hype-tracker/tree/feat-add-laravel/docs/logo.png)
+![HypeTracker](https://raw.githubusercontent.com/justinhodev/hype-tracker/feat-add-laravel/docs/logo.png)
 
 ![Current Version](https://img.shields.io/github/v/tag/justinhodev/hype-tracker?style=flat-square)
 ![StyleCI](https://github.styleci.io/repos/173895523/shield?branch=feat-add-laravel)
@@ -54,4 +54,4 @@ coming soon
 
 # Database Entity Relationship Model
 
-![ER Diagram](https://github.com/hype-tracker/tree/feat-add-laravel/docs/er-diagram.png)
+![ER Diagram](https://raw.githubusercontent.com/justinhodev/hype-tracker/feat-add-laravel/docs/er-diagram.png)
