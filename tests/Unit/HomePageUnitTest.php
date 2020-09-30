@@ -10,7 +10,7 @@ use Tests\TestCase;
 class HomePageUnitTest extends TestCase
 {
     /**
-     * Get Home Page.
+     * Get Home Page from External HTTP Request.
      *
      * @return void
      */
@@ -19,6 +19,6 @@ class HomePageUnitTest extends TestCase
         $response = $this->get('/');
 
         $response->assertStatus(200);
-        $response->assertSeeLivewire('ShowSneakers');
+        $response->assertSeeLivewire('show-sneakers');
     }
 }
