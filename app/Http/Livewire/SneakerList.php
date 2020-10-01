@@ -4,10 +4,10 @@ namespace App\Http\Livewire;
 
 use Livewire\Component;
 
-class ShowSneakers extends Component
+class SneakerList extends Component
 {
     public function render()
     {
-        return view('livewire.show-sneakers');
+        return view('livewire.sneaker-list');
     }
 }

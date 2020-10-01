@@ -3,5 +3,6 @@
 @section('content')
 
     <h1>HypeTracker</h1>
-    <livewire:show-sneakers>
+
+    <livewire:sneaker-list>
 @endsection
