@@ -12,10 +12,10 @@
 
         @livewireStyles
     </head>
-    <body class="font-sans antialiased">
-        <div class="mx-auto">
-            @yield('content')
-        </div>
+    <body class="font-sans antialiased lg:container lg:mx-auto">
+        @include('layouts.header')
+
+        @yield('content')
 
         @livewireScripts
         <script src="{{ asset('js/app.js') }}"></script>
