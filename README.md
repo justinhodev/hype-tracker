@@ -3,6 +3,7 @@
 ![Current Version](https://img.shields.io/github/v/tag/justinhodev/hype-tracker?style=flat-square)
 ![StyleCI](https://github.styleci.io/repos/173895523/shield?branch=feat-add-laravel)
 ![License](https://img.shields.io/github/license/justinhodev/hype-tracker?style=flat-square)
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Fjustinhodev%2Fhype-tracker.svg?type=small)](https://app.fossa.com/projects/git%2Bgithub.com%2Fjustinhodev%2Fhype-tracker?ref=badge_small)
 
 ---
 
@@ -55,3 +56,7 @@ coming soon
 # Database Entity Relationship Model
 
 ![ER Diagram](https://raw.githubusercontent.com/justinhodev/hype-tracker/feat-add-laravel/docs/er-diagram.png)
+
+# License
+
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Fjustinhodev%2Fhype-tracker.svg?type=large)](https://app.fossa.com/projects/git%2Bgithub.com%2Fjustinhodev%2Fhype-tracker?ref=badge_large)
