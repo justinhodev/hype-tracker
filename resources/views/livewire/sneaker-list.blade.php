@@ -1,11 +1,14 @@
 <div class="max-w-screen-xl">
     <div class="flex justify-end w-full">
-        <input
-            wire:model="search"
-            type="text"
-            class="w-1/6 px-3 py-2 leading-tight border rounded shadow text-accent-700 appearance-non focus:outline-none focus:shadow-outline"
-            placeholder="Search Sneakers..."
-        />
+        <label>
+            Search
+            <input
+                wire:model="search"
+                type="text"
+                class="w-1/6 px-3 py-2 leading-tight border rounded shadow text-accent-700 appearance-non focus:outline-none focus:shadow-outline"
+                placeholder="Search Sneakers..."
+            />
+        </label>
     </div>
 
     <div class="flex justify-center w-full">
