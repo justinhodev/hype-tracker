@@ -39,10 +39,12 @@ class SneakerList extends Component
         if (strlen(trim($this->search)) > 0) {
             $sneakers = Sneaker::where('name', 'LIKE', '%'.$this->search.'%')
                 ->paginate(self::PAGINATE_LENGTH);
+
             return view('livewire.sneaker-list', ['sneakers' => $sneakers]);
         }
 
         $sneakers = Sneaker::paginate(self::PAGINATE_LENGTH);
+
         return view('livewire.sneaker-list', ['sneakers' => $sneakers]);
     }
 }
