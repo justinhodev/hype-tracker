@@ -1,38 +1,62 @@
-# HypeTracker
+![HypeTracker](https://raw.githubusercontent.com/justinhodev/hype-tracker/feat-add-laravel/docs/logo.png)
 
-**THIS PROJECT IS CURRENTLY BEING REWORKED, SEE [FEAT-ADD-LARAVEL](https://github.com/justinhodev/hype-tracker/tree/feat-add-laravel) BRANCH FOR CURRENT PROGRESS**
+![Current Version](https://img.shields.io/github/v/tag/justinhodev/hype-tracker?style=flat-square)
+![StyleCI](https://github.styleci.io/repos/173895523/shield?branch=feat-add-laravel)
+![License](https://img.shields.io/github/license/justinhodev/hype-tracker?style=flat-square)
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Fjustinhodev%2Fhype-tracker.svg?type=small)](https://app.fossa.com/projects/git%2Bgithub.com%2Fjustinhodev%2Fhype-tracker?ref=badge_small)
 
 ---
 
-Full stack web application to read data from public APIs (Twitter, Reddit) and form visualizations
+**THIS IS THE V2 BRANCH OF HYPETRACKER - REFACTORING V1 ONTO LARAVEL**
 
-## Project Goals
+HypeTracker is a data aggregator application for social media 'impressions' on sneakers bought and sold in the aftermarket.
 
-Show data about sneakers and statistics about the sneaker’s attention / mentions on social media platforms such as Twitter, or Reddit. Learn and adopt SQL schemas and a RDBMS(MariaDB) in a full stack PHP application.
+See my blog detailing [what HypeTracker is](https://blog.justinho.studio/designing-a-database-to-track-my-sneakers) and [why I am refactoring it](https://blog.justinho.studio/revisiting-my-project-from-2018)
 
-## Getting Started
+# Changelog / Goals for V2
 
-1. Fork repo to local env
-2. Insert SQL file into SQL db
-3. Serve /public and /private file from htdocs of Apache Web server
- 
-## Preview
- 
-![Home Page](https://drive.google.com/uc?id=1xU7lYyvumVjkm1PG30kXKnk6x-kq2V6b)
- 
-![Details Page](https://drive.google.com/uc?id=1V51ncFXquCTAvmTnvHwCG9HVi4ARSBHf)
- 
- 
-## Relational Schema
+- ~~migrate database schema~~ see PR [#4](https://github.com/justinhodev/hype-tracker/pull/4)
+- ~~migrate internal sneakers API~~ see PR [#7](https://github.com/justinhodev/hype-tracker/pull/7)
+- migrate front-end
+- deploy as demo / push as v2
+- add social media api scraping
 
-Sneaker (sneaker_id, brand_id, name, release_date, image, price) Brand (brand_id, name, logo)
-Ranking (sneaker_id, score, number_of_mentions, platform) Watchlist (member_id, sneaker_id)
-Member (member_id, firstname, lastname, email, password)
+# Getting Started
 
-## ER Diagram
- 
-![ER Diagram for HypeTracker](https://drive.google.com/uc?id=19X_iqno1i3W6VNwfzVnspqPaOSlnhO2o)
- 
-## SQL Diagram
- 
-![SQL Diagram for HypeTracker](https://drive.google.com/uc?id=1FCBYIPStsIxyOIXcg5Hy2jnWGgCUFP5s)
+## Requirements
+
+### [Homestead](https://laravel.com/docs/master/homestead)
+
+- PHP ^7.3
+- Composer ^1.10.13
+- Vagrant ^2.2.10 (with your choice of virtualization layer)
+- (example) VirtualBox ^6.1.14 (with Vagrant's VirtualBox provider)
+
+```sh
+$ git clone https://github.com/justinhodev/hype-tracker.git
+$ cd hype-tracker
+
+# Install Composer Dependencies
+$ composer install
+
+# Prepare config for Homestead
+$ composer homestead
+
+# Provision the VM
+$ vagrant up
+
+# SSH into Vagrant Box
+$ vagrant ssh
+```
+
+### Docker
+
+coming soon
+
+# Database Entity Relationship Model
+
+![ER Diagram](https://raw.githubusercontent.com/justinhodev/hype-tracker/feat-add-laravel/docs/er-diagram.png)
+
+# License
+
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Fjustinhodev%2Fhype-tracker.svg?type=large)](https://app.fossa.com/projects/git%2Bgithub.com%2Fjustinhodev%2Fhype-tracker?ref=badge_large)
