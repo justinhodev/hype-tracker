@@ -37,7 +37,7 @@ class SneakerList extends Component
         $sneakers = [];
 
         if (strlen(trim($this->search)) > 0) {
-            $sneakers = Sneaker::where('name', 'LIKE', '%' . $this->search . '%')
+            $sneakers = Sneaker::where('name', 'LIKE', '%'.$this->search.'%')
                 ->paginate(self::PAGINATE_LENGTH);
         } else {
             $sneakers = Sneaker::paginate(self::PAGINATE_LENGTH);
