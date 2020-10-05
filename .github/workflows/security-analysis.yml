@@ -1,0 +1,30 @@
+name: Security Scan
+
+on : "pull_request"
+
+jobs:
+  codacy-security-scan:
+    name: Codacy Security Scan
+    runs-on: ubuntu-latest
+    steps:
+      # Checkout the repository to the GitHub Actions runner
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      #Execute Codacy Analysis CLI and generate a SARIF with security issues identified
+      - name: Run Codacy Analysis CLI
+        uses: codacy/codacy-analysis-cli-action@1.0.0
+        with:
+          project-token: ${{ secrets.CODACY_PROJECT_TOKEN }}
+          verbose: true
+          output: results.sarif
+          format: sarif
+          # Force 0 exit code to allow SARIF file generation
+          # # This will handover control for PR rejection to GitHub checks
+          max-allowed-issues: 2147483647
+
+      # Upload the SARIF file
+      - name: Upload SARIF results file
+        uses: github/codeql-action/upload-sarif@v1
+        with:
+          sarif_file: results.sarif
