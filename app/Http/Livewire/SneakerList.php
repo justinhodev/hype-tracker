@@ -11,7 +11,7 @@ class SneakerList extends Component
 {
     use WithPagination;
 
-    const PAGINATE_LENGTH = 12;
+    const PAGINATE_LENGTH = 20;
 
     public $search = '';
 
