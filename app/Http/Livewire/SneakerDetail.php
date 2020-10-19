@@ -7,7 +7,6 @@ use Livewire\Component;
 
 class SneakerDetail extends Component
 {
-
     public $sneaker;
 
     public function render()

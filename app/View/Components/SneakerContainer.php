@@ -7,7 +7,6 @@ use Illuminate\View\Component;
 
 class SneakerContainer extends Component
 {
-
     public $sneaker;
 
     /**
