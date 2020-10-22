@@ -1,7 +1,8 @@
-![HypeTracker](https://raw.githubusercontent.com/justinhodev/hype-tracker/feat-add-laravel/docs/logo.png)
+![HypeTracker](https://raw.githubusercontent.com/justinhodev/hype-tracker/master/docs/logo.png)
 
 ![Current Version](https://img.shields.io/github/v/tag/justinhodev/hype-tracker?style=flat-square)
-![StyleCI](https://github.styleci.io/repos/173895523/shield?branch=feat-add-laravel)
+[![Codacy Badge](https://app.codacy.com/project/badge/Grade/c115d68a141b416cb7f04be91e8665b2)](https://www.codacy.com/gh/justinhodev/hype-tracker/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=justinhodev/hype-tracker&amp;utm_campaign=Badge_Grade)
+[![StyleCI](https://github.styleci.io/repos/173895523/shield?branch=master)](https://github.styleci.io/repos/173895523?branch=master)
 ![License](https://img.shields.io/github/license/justinhodev/hype-tracker?style=flat-square)
 [![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Fjustinhodev%2Fhype-tracker.svg?type=small)](https://app.fossa.com/projects/git%2Bgithub.com%2Fjustinhodev%2Fhype-tracker?ref=badge_small)
 
@@ -15,7 +16,7 @@ See my blog detailing [what HypeTracker is](https://blog.justinho.studio/designi
 
 - ~~migrate database schema~~ see PR [#4](https://github.com/justinhodev/hype-tracker/pull/4)
 - ~~migrate internal sneakers API~~ see PR [#7](https://github.com/justinhodev/hype-tracker/pull/7)
-- migrate front-end
+- ~~migrate front-end see PR~~ [#17](https://github.com/justinhodev/hype-tracker/pull/17)
 - deploy as demo / push as v2
 - add social media api scraping
 
