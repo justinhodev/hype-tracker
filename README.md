@@ -54,7 +54,7 @@ coming soon
 
 # Database Entity Relationship Model
 
-![ER Diagram](https://raw.githubusercontent.com/justinhodev/hype-tracker/feat-add-laravel/docs/er-diagram.png)
+![ER Diagram](https://raw.githubusercontent.com/justinhodev/hype-tracker/master/docs/er-diagram.png)
 
 # License
 
