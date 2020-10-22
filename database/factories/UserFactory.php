@@ -28,6 +28,7 @@ class UserFactory extends Factory
             'email_verified_at' => now(),
             'password' => $this->faker->password,
             'remember_token' => Str::random(10),
+            'profile_photo_path' => 'https://thehappypuppysite.com/wp-content/uploads/2018/05/shiba-inu-header.jpg',
         ];
     }
 }
