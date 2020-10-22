@@ -7,8 +7,6 @@
 
 ---
 
-**THIS IS THE V2 BRANCH OF HYPETRACKER - REFACTORING V1 ONTO LARAVEL**
-
 HypeTracker is a data aggregator application for social media 'impressions' on sneakers bought and sold in the aftermarket.
 
 See my blog detailing [what HypeTracker is](https://blog.justinho.studio/designing-a-database-to-track-my-sneakers) and [why I am refactoring it](https://blog.justinho.studio/revisiting-my-project-from-2018)
