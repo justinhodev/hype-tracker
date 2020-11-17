@@ -1,0 +1,29 @@
+# Dependabot Dependency Scanning
+version: 2
+updates:
+  # Check for PHP package updates
+  - package-ecosystem: "composer"
+    directory: "/" # Location of composer.json
+    schedule:
+      interval: "daily"
+    commit-message:
+      prefix: "build(composer):"
+      include: "scope"
+      
+  # Check for NPM package updates
+  - package-ecosystem: "npm"
+    directory: "/" # Location of package.json
+    schedule:
+      interval: "daily"
+    commit-message:
+      prefix: "build(npm):"
+      include: "scope"
+      
+  # Check for GitHub Actions updates
+  - package-ecosystem: "github-actions"
+    directory: "/" # GitHub automatically resolves this to `.github/workflows`
+    schedule:
+      interval: "daily"
+    commit-message:
+      prefix: "ci(github):"
+      include: "scope"
